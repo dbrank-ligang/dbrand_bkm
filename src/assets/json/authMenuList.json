@@ -1,0 +1,147 @@
+{
+  "code": 200,
+  "data": [
+    {
+      "path": "/home/index",
+      "name": "home",
+      "component": "/home/index",
+      "meta": {
+        "icon": "HomeFilled",
+        "title": "本品概览",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": true,
+        "isKeepAlive": true,
+        "isDisabled": false
+      }
+    },
+    {
+      "path": "/brandRatio/index",
+      "name": "brandRatio",
+      "component": "/brandRatio/index",
+      "meta": {
+        "icon": "",
+        "title": "竞品对比",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "isDisabled": false
+      }
+    },
+    {
+      "path": "/mediaSuggest/index",
+      "name": "mediaSuggest",
+      "component": "/mediaSuggest/index",
+      "meta": {
+        "icon": "InfoFilled",
+        "title": "媒体推荐",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "isDisabled": false
+      }
+    },
+
+    {
+      "path": "/mediaSearch/index",
+      "name": "mediaSearch",
+      "component": "/mediaSearch/index",
+      "meta": {
+        "icon": "InfoFilled",
+        "title": "媒体查询",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "isDisabled": false
+      }
+    },
+    {
+      "path": "/mediaDetail/index",
+      "name": "mediaDetail",
+      "component": "/mediaDetail/index",
+      "meta": {
+        "icon": "",
+        "title": "媒体详情",
+        "isLink": "",
+        "isHide": true,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/mediaSearch/index",
+        "isDisabled": false
+      }
+    },
+    {
+      "path": "/negative/index",
+      "name": "negative",
+      "component": "/negative/index",
+      "meta": {
+        "icon": "",
+        "title": "负面曝光",
+        "isLink": "",
+        "isHide": true,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/negative/index",
+        "isDisabled": false
+      }
+    },
+    {
+      "path": "/mediaQ/index",
+      "name": "mediaQ",
+      "component": "/mediaQ/index",
+      "meta": {
+        "icon": "",
+        "title": "其他页面",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/mediaQ/index",
+        "isDisabled": false
+      }
+    },
+    {
+      "path": "/mediaQ2/index",
+      "name": "mediaQ2",
+      "component": "/mediaQ2/index",
+      "meta": {
+        "icon": "",
+        "title": "其他页面2",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/mediaQ2/index",
+        "isDisabled": false
+      }
+    },
+    {
+      "path": "/mediaQ3/index",
+      "name": "mediaQ3",
+      "component": "/mediaQ3/index",
+      "meta": {
+        "icon": "",
+        "title": "其他页面3",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/mediaQ3/index",
+        "isDisabled": false
+      }
+    }
+  ],
+  "msg": "成功"
+}
