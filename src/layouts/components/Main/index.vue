@@ -10,6 +10,7 @@
         </keep-alive>
       </transition>
     </router-view>
+    <BottomNav></BottomNav>
   </el-main>
   <el-footer v-show="footer" style="display: none">
     <!-- <Footer /> -->
@@ -24,6 +25,8 @@ import { useGlobalStore } from "@/stores/modules/global";
 import { useKeepAliveStore } from "@/stores/modules/keepAlive";
 import Maximize from "./components/Maximize.vue";
 import Tabs from "@/layouts/components/Tabs/index.vue";
+import BottomNav from "@/views/components/BottomNav/index.vue";
+
 // import Footer from "@/layouts/components/Footer/index.vue";
 
 const globalStore = useGlobalStore();

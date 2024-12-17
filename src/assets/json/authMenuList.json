@@ -7,7 +7,7 @@
       "component": "/home/index",
       "meta": {
         "icon": "HomeFilled",
-        "title": "本品概览",
+        "title": "关于BKM案例库",
         "isLink": "",
         "isHide": false,
         "isFull": false,
@@ -22,7 +22,7 @@
       "component": "/brandRatio/index",
       "meta": {
         "icon": "",
-        "title": "竞品对比",
+        "title": "案例搜索",
         "isLink": "",
         "isHide": false,
         "isFull": false,
@@ -37,44 +37,12 @@
       "component": "/mediaSuggest/index",
       "meta": {
         "icon": "InfoFilled",
-        "title": "媒体推荐",
+        "title": "案例报告",
         "isLink": "",
         "isHide": false,
         "isFull": false,
         "isAffix": false,
         "isKeepAlive": true,
-        "isDisabled": false
-      }
-    },
-
-    {
-      "path": "/mediaSearch/index",
-      "name": "mediaSearch",
-      "component": "/mediaSearch/index",
-      "meta": {
-        "icon": "InfoFilled",
-        "title": "媒体查询",
-        "isLink": "",
-        "isHide": false,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true,
-        "isDisabled": false
-      }
-    },
-    {
-      "path": "/mediaDetail/index",
-      "name": "mediaDetail",
-      "component": "/mediaDetail/index",
-      "meta": {
-        "icon": "",
-        "title": "媒体详情",
-        "isLink": "",
-        "isHide": true,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true,
-        "activeMenu":"/mediaSearch/index",
         "isDisabled": false
       }
     },
@@ -95,50 +63,50 @@
       }
     },
     {
-      "path": "/mediaQ/index",
-      "name": "mediaQ",
-      "component": "/mediaQ/index",
+      "path": "/aboutBKM/index",
+      "name": "aboutBKM",
+      "component": "/aboutBKM/index",
       "meta": {
         "icon": "",
-        "title": "其他页面",
+        "title": "关于BKM案例库",
         "isLink": "",
         "isHide": false,
         "isFull": false,
         "isAffix": false,
         "isKeepAlive": true,
-        "activeMenu":"/mediaQ/index",
+        "activeMenu":"/aboutBKM/index",
         "isDisabled": false
       }
     },
     {
-      "path": "/mediaQ2/index",
-      "name": "mediaQ2",
-      "component": "/mediaQ2/index",
+      "path": "/bkmSearch/index",
+      "name": "bkmSearch",
+      "component": "/bkmSearch/index",
       "meta": {
         "icon": "",
-        "title": "其他页面2",
+        "title": "案例搜索",
         "isLink": "",
         "isHide": false,
         "isFull": false,
         "isAffix": false,
         "isKeepAlive": true,
-        "activeMenu":"/mediaQ2/index",
+        "activeMenu":"/bkmSearch/index",
         "isDisabled": false
       }
     },
     {
-      "path": "/mediaQ3/index",
-      "name": "mediaQ3",
-      "component": "/mediaQ3/index",
+      "path": "/yearList/index",
+      "name": "yearList",
+      "component": "/yearList/index",
       "meta": {
         "icon": "",
-        "title": "其他页面3",
+        "title": "年榜",
         "isLink": "",
-        "isHide": false,
+        "isHide": true,
         "isFull": false,
         "isAffix": false,
         "isKeepAlive": true,
-        "activeMenu":"/mediaQ3/index",
+        "activeMenu":"/yearList/index",
         "isDisabled": false
       }
     }

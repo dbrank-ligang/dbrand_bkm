@@ -14,6 +14,9 @@ export const NEGATIVE: string = "/negative/index";
 // 品牌对比
 export const BRANDRATIO: string = "/brandRatio/index";
 
+// 年榜页面
+export const YEARLIST: string = "/yearList/index";
+
 // 默认主题颜色
 // export const DEFAULT_PRIMARY: string = "#009688"; //绿色
 export const DEFAULT_PRIMARY: string = "#008efa"; // 蓝色

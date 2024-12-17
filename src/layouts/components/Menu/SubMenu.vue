@@ -34,45 +34,27 @@ const handleClickMenu = (subItem: Menu.MenuOptions) => {
 </script>
 
 <style lang="scss">
+.el-menu {
+  display: flex;
+  height: 22px;
+}
 .el-menu-item {
-  display: inline-block;
-  // width: 90px;
-  height: 34px;
+  height: 100% !important;
+  font-size: 16px;
   text-align: center;
-  line-height: 32px;
-  margin-top: 37px !important;
   color: #000000;
-  background: #ffffff;
-  border: 2px solid #000000;
   border-radius: 10px;
 }
-.el-sub-menu .el-sub-menu__title:hover {
-  // color: var(--el-menu-hover-text-color) !important;
-  // background-color: transparent !important;
-}
-.el-menu--collapse {
-  .is-active {
-    .el-sub-menu__title {
-      // color: #ffffff !important;
-      // background-color: var(--el-color-primary) !important;
-    }
-  }
-}
+
 .el-menu-item {
   &:hover {
-    color: var(--el-menu-hover-text-color);
+    color: #ffd000;
+    background-color: transparent !important;
   }
   &.is-active {
-    // width: 90px;
-    // height: 34px;
-    // text-align: center;
-    // line-height: 32px;
-    font-weight: bolder;
-    color: #000000;
-    background-color: rgb(255 221 0);
-
-    // color: var(--el-menu-active-color) !important;
-    // background-color: var(--el-menu-active-bg-color) !important;
+    font-weight: bold;
+    color: #ffd000;
+    // color: #000000;
   }
 }
 .vertical,
