@@ -8,300 +8,109 @@
   background-color: #F7F7F7;
   // border: 1px solid red;
   overflow: hidden;
-  padding-bottom: 20px;
+  padding: 15px;
 }
-.aboutBKM_billboard {
+
+.SearchInner {
   width: 100%;
   height: auto;
-  // border: 1px solid red;
-
-  .tab_list {
-    width: 100%;
-    height: 40px;
-    background-color: #ffdd00;
-    ul {
-      width: 200px;
-      font-size: 16px;
-      margin: auto;
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
-      list-style: none;
-
-      li {
-        color: #8c8c8c;
-        line-height: 40px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-    }
-    .highlighted {
-      color: #000;
-    }
-  }
-}
-.timeBox {
-  display: flex;
-  height: 50px;
-  font-size: 16px;
-  line-height: 50px;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  // 设置间距
-   div {
-    width: 33%;
-    // border: 1px solid red;
-    cursor: pointer;
-   }
-}
-
-.swiper-slide {
-  width: 360px;
-  text-align: center;
-  font-size: 18px;
-  .swiper-slide-active {
-    height: 200px; 
-  }
-}
-.active {
-  color: #fff;
-  background: #007aff;
-}
-.swiper {
-  width: 100%;
-  height: auto;
-  // margin: 20px auto;
-  // border: 1px solid red;
-
-}
-.swiper-slide-prev,
-.swiper-slide-next {
-  transform: scale(0.96) !important;
-  filter: blur(1px) !important;
-}
-
-.swiper-slide-active{
-  .caseBox {
-    &:hover {
-      // background-color: #f7f7f7;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.5);
-    }
-  }
-}
-.caseBox {
-  width: 100%;
-  height: 120px;
-  // border: 1px solid #000;
+  font-size: 14px;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 5px rgb(0 0 0/20%);
-  text-align: left;
-  padding: 10px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  font-size: 12px;
-  cursor: pointer;
-  .caseBox_col {
-    display: flex;
-    // padding-bottom: 5px;
-    div{
-      line-height: 1.3rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-      -webkit-box-orient: vertical;
-      text-overflow: ellipsis;
-    }
-  }
-  .name {
-    font-size: 14px;
-    font-weight: bold;
-    div:nth-child(1) {
-      width: 70px;
-    }
-    div:nth-child(2) {
-      flex: 1;
-    }
-  }
-}
-
-/* 更改按钮背景颜色 */
-:deep(.swiper-button-prev) {   
-  color: #000 !important; /* 红色 */
-}
-:deep(.swiper-button-next) {
-  color: #000 !important; /* 红色 */
-}
-:deep(.swiper-button-prev.swiper-button-disabled) {
-  opacity: 0.2 !important;
-} 
-:deep(.swiper-button-next.swiper-button-disabled) {
-  opacity: 0.2 !important;
-}
-
-.articleBox {
-  width: 100%;
-  height: 30px;
-  font-size: 16px;
-  text-align: center;
-  line-height: 30px;
-  margin-top: 20px;
-  // border: 1px solid red;
-  cursor: pointer;
-}
-.paddingBox{
-  padding: 0 13px;
-}
-
-// 搜索模块
-.searchBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  // align-items: center;
-  width: 100%;
-  height: 282px;
-  background-color: #ffffff;
-  position: relative;
   border-radius: 6px;
-  margin-top: 20px;
-  .searchTip {
-    font-size: 14px;
-    line-height: 40px;
-    margin-top: 66px;
-  }
-  .searchInputBox {
-    height: 42px;
-    display: flex;
-    justify-content: space-between;
-  }
-  :deep(.el-input-group__append) {
-    background-color: #ffdd00;
-  }
-  .hoistryBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    width: 800px;
+  padding: 24px 15px;
+
+  .tradeBox {
+    width: 100%;
     height: auto;
-    margin-top: 10px;
-    font-size: 16px;
-    .listTit {
-      width: 90px;
-      font-weight: 700;
-    }
-    .listCon {
-      display: flex;
-      flex: 1;
-      flex-wrap: wrap;
-      justify-content: left;
-      color: #bbbbbb;
-      div {
-        // margin-right: 20px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        span {
-         margin-right: 20px;
-        }
-      }
-      div:hover {
-        color: #000000;
-      }
-    }
-  }
-  
-  .buttonStyle {
-    background-color: #ffdd00;
-  }
-  
-}
-
-// 热门报告
-.hotReportBox {
-  width: 100%;
-  height: 678px;
-  border-radius: 6px;
-  background-color: #fff;
-  margin-top: 20px;
-  padding: 47px 33px 20px 33px;
-
-  .hotReportTit {
-    width: 100%;
-    height: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    position: relative;
-    span {
-      font-size: 14px;
-      font-weight: 400;
-      text-align: right;
-      position: absolute;
-      right: 0px;
-    }
-  }
-
-  .hotReportCon {
-    width: 100%;
-    height: 529px;
-    margin-top: 18px;
     display: flex;
-    justify-content: space-between;
-    div{
-      width: 32%;
+    justify-content: space-around;
+    margin-bottom: 18px;
+    // border: 1px solid red;
+
+    .tradeBox_tit {
+      width: 80px;
+      // border: 1px solid red;
+      span {
+        display: block;
+        font-size: 12px;
+        // padding: 0 3px;
+      }
     }
-    img {
-      width: 100%;
-      height: 196px;
-    }
-    .caseTit {
-      width: 100%;
-      text-align: center;
-      font-size: 16px;
-      font-weight: bold;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .rankListBox {
-      width: 100%;
-      height: 252px;
-      margin-top: 29px;
-      ul {
+    .tradeBox_list {
+      flex: 1;
+      // border: 1px solid red;
+      display: flex;
+      flex-direction: column;
+
+      div {
+        // border: 1px solid red;
+      }
+      .tagList {
         width: 100%;
-        font-size: 14px;
-        padding: 0;
-        margin: 0;
-     
-        li {
-          display: flex;
-          justify-content: flex-start;
-          line-height: 22px;
-          span:nth-child(1) {
-            width: 50px;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        // margin-bottom: 8px;
+      
+         div {
+          margin-right: 18px;
+          margin-bottom: 8px;
+          cursor: pointer;
+          span {
+            min-width: 25px;
+            font-size: 12px;
             text-align: center;
+            color: #fff;
             display: inline-block;
-          }
-          span:nth-child(2) {
-            flex: 1;
-            text-align: left;
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            border-radius: 10px;
+            margin-left: 2px;
+            background-color: #878787;
           }
         }
-     
+
+        .tagList_type {
+          width: 100%;
+          height: 26px;
+          display: flex;
+          flex-wrap: wrap;
+          .tagList_typeTit {
+            width: 90px;
+            margin-right: 0px;
+            &:hover {
+              color: #000;
+            }
+          }
+          .tagList_typeList {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+          }
+        }
+   
+      }
+      .tagList_select {
+        width: 100%;
+        // height: 30px;
+      }
+    }
+    .inputBox {
+      width: 220px;
+      display: flex;
+      .el-input {
+        height: 26px;
+        margin-right: 5px;
+    
+      }
+      .el-button {
+        border: 1px solid #000;
       }
     }
 
   }
-  .hotReportBox_tip{
-    font-size: 12px;
-    line-height: 16px;
-    margin-top: 10px;
-    color: rgba(161, 161, 161, 1);
-  }
 }
 
+.tagList_item:hover {
+  color: #ffd000;
+}

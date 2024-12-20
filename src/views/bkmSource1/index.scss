@@ -1,0 +1,65 @@
+*{
+  box-sizing: border-box;  
+  list-style: none;
+}
+*{
+  box-sizing: border-box;  
+  list-style: none;
+}
+.bkmSourceBox {
+  width: 1200px;
+  margin: auto;
+  background-color: #F7F7F7;
+  // border: 1px solid red;
+  overflow: hidden;
+  padding: 15px;
+  overflow: scroll;
+  // display: flex;
+  // flex-wrap: wrap;
+  height: auto;
+  position: relative;
+
+  // .cos_flex_1 {
+  //   -webkit-box-flex: 1;
+  //   -webkit-flex: 1 1 0%;
+  //   flex: 1 1 0%;
+  //   border: 1px solid red;
+  // }
+
+  .img_box{
+    width: 291px;
+    // height: 100%;
+    position: absolute;
+    top: 0;
+    img {
+      max-height: 600px;
+      width: 100%;
+      height: 100%;
+      height: auto;
+      display: inline-block;
+    }
+  }
+}
+
+
+.waterfall-container {
+  width: 1200px;
+  height: 800px;
+  margin: auto;
+  background-color: #F7F7F7;
+  // border: 1px solid red;
+  overflow: auto;
+  padding: 15px;
+  position: relative;
+  }
+  .waterfall-item {
+    position: absolute;
+    width: 291px;
+    max-height: 500px;
+    box-sizing: border-box;
+  }
+  .waterfall-item img {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+  }

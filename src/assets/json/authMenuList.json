@@ -109,6 +109,22 @@
         "activeMenu":"/yearList/index",
         "isDisabled": false
       }
+    },
+    {
+      "path": "/bkmSource/index",
+      "name": "bkmSource",
+      "component": "/bkmSource/index",
+      "meta": {
+        "icon": "",
+        "title": "素材库",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/bkmSource/index",
+        "isDisabled": false
+      }
     }
   ],
   "msg": "成功"
