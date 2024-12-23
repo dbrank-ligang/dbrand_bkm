@@ -40,8 +40,9 @@
             <div class="caseBox_col">
               <div>案例编号：</div>
               <div>{{ cardItem.num }}</div>
+              <div class="caseBox_col_rank">{{ cardItem?.rank }}</div>
             </div>
-            <div class="caseBox_col name">
+            <div class="caseBox_col caseBox_col_name">
               <div class="caseBox_col_label">案例名称：</div>
               <div :title="cardItem.name">{{ cardItem.name }}</div>
             </div>
@@ -49,9 +50,11 @@
               <div>数字品牌价值：</div>
               <div>{{ cardItem.DB }}</div>
             </div>
-            <div class="caseBox_col">
+            <div class="caseBox_col caseBox_col_type">
               <div>案例类型：</div>
-              <div>{{ cardItem.DB }}</div>
+              <div :title="cardItem.type.toString()">
+                <span v-for="typeItem in cardItem.type" :key="typeItem">{{ typeItem }}</span>
+              </div>
             </div>
           </div>
         </swiper-slide>
@@ -151,6 +154,7 @@ const carouseData = ref([
     article: "文章文章文章文章1",
     msg: [
       {
+        rank: "No.1",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日CampaignBabycare世界镇痛日CampaignBabycare世界镇痛日CampaignBabycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
@@ -229,34 +233,49 @@ const carouseData = ref([
     article: "文章文章文章文章2",
     msg: [
       {
+        rank: "No.1",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+        type: [
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销",
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销",
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销"
+        ],
         url: ""
       },
       {
+        rank: "No.2",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.3",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.4",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.5",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
@@ -469,6 +488,7 @@ const caseListData = ref([
     imgUrl: "https://img.js.design/assets/img/673306d218cdbc3a459c3269.jpg#6988e2e6f70b1a2ea2ce507a9e95b3c3)",
     title1: "寻求“专业+生动”的最优解",
     title2: "[BKM案例之B2B企业营销方法论]专题研究报告",
+    reportUrl: "",
     rankList: [
       "2023华为开发者大会Campaign",
       "2022华为开发者大会Campaign",
@@ -486,6 +506,7 @@ const caseListData = ref([
     imgUrl: "https://img.js.design/assets/img/673307241cbcd798ff429210.jpg#0273bd30caf144bfb81d36ede330d64f",
     title1: "联名圈太卷，如何1+1>2",
     title2: "BKM案例之品牌联名营销专项研究报告",
+    reportUrl: "",
     rankList: [
       "2023华为开发者大会Campaign",
       "2022华为开发者大会Campaign",
@@ -503,6 +524,7 @@ const caseListData = ref([
     imgUrl: "https://img.js.design/assets/img/6733073fea18823f7375139f.jpg#5ada8917d6496cfffb154bf48afc90bc",
     title1: "『这些预算没有浪费』",
     title2: "2023年品牌营销BKM案例全景报告",
+    reportUrl: "",
     rankList: [
       "2023华为开发者大会Campaign",
       "2022华为开发者大会Campaign",

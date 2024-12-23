@@ -17,14 +17,15 @@
   font-size: 14px;
   background-color: #fff;
   border-radius: 6px;
-  padding: 24px 15px;
+  font-size: 16px;
+  padding: 10px 15px;
 
   .tradeBox {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 18px;
+    margin-top: 18px;
     // border: 1px solid red;
 
     .tradeBox_tit {
@@ -41,10 +42,6 @@
       // border: 1px solid red;
       display: flex;
       flex-direction: column;
-
-      div {
-        // border: 1px solid red;
-      }
       .tagList {
         width: 100%;
         height: auto;
@@ -75,7 +72,7 @@
           display: flex;
           flex-wrap: wrap;
           .tagList_typeTit {
-            width: 90px;
+            min-width: 90px;
             margin-right: 0px;
             &:hover {
               color: #000;
@@ -109,8 +106,168 @@
     }
 
   }
+
+  .buttonBox{
+    text-align: right;
+    .buttonStyle{
+      background-color: #ffdd00;
+    }
+  }
 }
 
 .tagList_item:hover {
   color: #ffd000;
+}
+
+.innerBox {
+  // border: 1px solid red;
+  width: 100%;
+  min-height: 300px;
+  margin-top: 30px;
+  background: url("@/assets/images/line.png") no-repeat;
+  background-size: 2px 100%;
+  background-position: 35px;
+  .innerYearsBox {
+    width: 100%;
+    height: auto;
+
+    .searchTagList {
+      width: 100%;
+      height: 34px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: flex-start;
+
+      .el-tag {
+        min-width: 70px;
+        height: 30px;
+        margin-right: 10px;
+        color: #000;
+        font-size: 16px !important;
+      }
+      .yearsTag {
+        font-weight: bold;
+        background: rgba(255, 171, 176, 1);
+      }
+      .tradeTag {
+        background: rgba(255, 246, 166, 1);
+      }
+      .brandTag {
+        background: rgba(197, 235, 198, 1);
+      }
+      .typesTag {
+        background: rgba(246, 207, 252, 1);;
+      }
+    }
+
+    .listCon {
+      width: 100%;
+      min-height: 132px;
+      // border: 1px solid blue;
+      display: flex;
+      align-items: center;
+
+      .listCon_left {
+        width: 70px;
+        height: 30px;
+        font-size: 16px !important;
+        // border: 1px solid red;
+        span {
+          width: 70px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          border-radius: 5px;
+          background-color: #fff;
+          // border: 1px solid red;
+          display: inline-block;
+          .listCon_leftIcon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ffdd00;
+            display: inline-block;
+          }
+        }
+    
+      }
+
+      .listCon_right {
+        width: 100%;
+        height: 100%;
+        gap: 16px;
+        margin-left: 10px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .caseBox {
+          width: 350px;
+          height: 100%;
+          background-color: #fff;
+          border-radius: 5px;
+          display: flex;
+          box-sizing: border-box;
+          cursor: pointer;
+          .caseBox_left{
+            width: 65px;
+            height: 100%;
+            padding: 10px 5px;
+            img {
+              width: 58px;
+              height: 58px;
+              border-radius: 50%;
+            }
+          }
+          .caseBox_right{
+            flex: 1;
+            height: 100%;
+            font-size: 12px;
+            padding: 8px 15px;
+            .caseBox_col {
+              display: flex;
+              margin-bottom: 5px;
+              // padding-bottom: 5px;
+              div{
+                line-height: 1.3rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+              }
+              div:nth-child(1) {
+                min-width: 62px;
+              }
+              .caseBox_col_rank {
+                font-size: 18px;
+                font-weight: 700;
+                position: absolute;
+                right: 20px;
+              }
+            }
+            .caseBox_col_name {
+              div:nth-child(2) {
+                flex: 1;
+                font-size: 14px;
+                font-weight: bold;
+              }
+            }
+            .caseBox_col_type {
+              div:nth-child(2) {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                span {
+                  padding-right: 4px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
