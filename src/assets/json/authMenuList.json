@@ -125,6 +125,38 @@
         "activeMenu":"/bkmSource/index",
         "isDisabled": false
       }
+    },
+    {
+      "path": "/caseDetail/index",
+      "name": "caseDetail",
+      "component": "/caseDetail/index",
+      "meta": {
+        "icon": "",
+        "title": "案例详情",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/caseDetail/index",
+        "isDisabled": false
+      }
+    },
+    {
+      "path": "/caseDetail1/index",
+      "name": "caseDetail1",
+      "component": "/caseDetail1/index",
+      "meta": {
+        "icon": "",
+        "title": "案例详情1",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/caseDetail1/index",
+        "isDisabled": false
+      }
     }
   ],
   "msg": "成功"

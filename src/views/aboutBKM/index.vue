@@ -51,7 +51,7 @@
               <div>{{ cardItem.DB }}</div>
             </div>
             <div class="caseBox_col caseBox_col_type">
-              <div>案例类型：</div>
+              <div>[案例类型]</div>
               <div :title="cardItem.type.toString()">
                 <span v-for="typeItem in cardItem.type" :key="typeItem">{{ typeItem }}</span>
               </div>

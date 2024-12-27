@@ -130,6 +130,7 @@
   .innerYearsBox {
     width: 100%;
     height: auto;
+    margin-bottom: 10px;
 
     .searchTagList {
       width: 100%;
@@ -162,10 +163,10 @@
 
     .listCon {
       width: 100%;
-      min-height: 132px;
-      // border: 1px solid blue;
+      height: 132px;
       display: flex;
       align-items: center;
+      margin-bottom: 8px;
 
       .listCon_left {
         width: 70px;

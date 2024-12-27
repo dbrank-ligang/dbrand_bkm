@@ -1,0 +1,82 @@
+*{
+  box-sizing: border-box;  
+  list-style: none;
+}
+.caseDetailBox {
+  width: 1200px;
+  height: 100%;
+  margin: auto;
+  background-color: #F7F7F7;
+  // border: 1px solid red;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+
+
+  .case_menu {
+    width: 146px;
+    height: 100%;
+    overflow: auto;
+    border: 1px solid red;
+    font-size: 16px;
+    color: #000;
+    padding-top: 30px;
+    background-color: rgba(255, 221, 0, 1);
+    // position: fixed;
+    div {
+      margin-bottom: 25px;
+    }
+    .menu {
+      text-align: center;
+      border: 1px solid #000;
+      border-radius: 10px;
+      margin: auto;
+      line-height: 32px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+   .oneLevel {
+    width: 120px;
+    height: 32px;
+    background-color: #fff;
+   }
+   .twoLevel{
+    width: 95px;
+    height: 32px;
+    background-color: rgba(254, 255, 186, 1);
+   }
+  }
+  .case_con {
+    // flex: 1;
+    width: 1054px;
+    padding: 10px;
+    border: 1px solid red;
+    overflow: auto;
+    position: relative;
+    // left: 146px;
+
+    .case_con1 {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+      background-color: #fff;
+
+      .chapterBox {
+        
+      }
+    }
+    
+    .box1 {
+      width: 100%;
+      height: 400px;
+      background-color: #fff;
+      border: 1px solid red;
+    }
+    .box2 {
+      width: 100%;
+      height: 400px;
+      border: 1px solid red;
+
+    }
+  }
+}
