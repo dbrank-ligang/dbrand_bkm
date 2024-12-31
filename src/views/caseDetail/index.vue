@@ -16,8 +16,37 @@
     </div>
     <div class="case_con" ref="scrollContainer">
       <div class="case_con1">
-        <div id="part1" class="chapterBox">part1</div>
-        <div id="time" class="box1">起止时间</div>
+        <div id="part1" class="moduleTitle">part1</div>
+        <div class="timeBox">
+          <div class="timeBox_left">
+            <div class="date">
+              <div style="font-size: 20px">Oct.</div>
+              <div style="font-size: 16px">2024</div>
+            </div>
+            <div class="caseMessage">
+              <div>案例编号：D2410301</div>
+              <div>
+                <div>案例名称：</div>
+                <div style="font-weight: 700" title="123">Babycare世界镇痛日世界镇痛日世界镇痛日世界镇痛日</div>
+              </div>
+            </div>
+          </div>
+          <div class="timeBox_right">
+            <div class="brandNameBox">
+              <img src="http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960" />
+              品牌名称
+            </div>
+          </div>
+        </div>
+        <div id="time" class="countBox">
+          <div class="countBox_left">
+            <div class="row_1"></div>
+            <div class="row_2"></div>
+            <div class="row_3"></div>
+            <div class="row_4"></div>
+          </div>
+          <div class="countBox_right"></div>
+        </div>
       </div>
       <div id="introduce" class="box2">案例介绍</div>
       <div id="highlights" class="box2">案例亮点</div>
