@@ -2,9 +2,9 @@
   "code": 200,
   "data": [
     {
-      "path": "/aboutBKM/index",
-      "name": "aboutBKM",
-      "component": "/aboutBKM/index",
+      "path": "/home/index",
+      "name": "home",
+      "component": "/home/index",
       "meta": {
         "icon": "",
         "title": "关于BKM案例库",
@@ -13,7 +13,7 @@
         "isFull": false,
         "isAffix": false,
         "isKeepAlive": true,
-        "activeMenu":"/aboutBKM/index",
+        "activeMenu":"/home/index",
         "isDisabled": false
       }
     },
@@ -78,22 +78,6 @@
         "isAffix": false,
         "isKeepAlive": true,
         "activeMenu":"/caseDetail/index",
-        "isDisabled": false
-      }
-    },
-    {
-      "path": "/caseDetail1/index",
-      "name": "caseDetail1",
-      "component": "/caseDetail1/index",
-      "meta": {
-        "icon": "",
-        "title": "案例详情1",
-        "isLink": "",
-        "isHide": false,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true,
-        "activeMenu":"/caseDetail1/index",
         "isDisabled": false
       }
     }

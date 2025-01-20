@@ -44,6 +44,7 @@ export const disabledDateFun = time => {
   return time.getTime() > Date.now() || time.getTime() < threeMonths;
 };
 
+//中英文混合长度计算
 export function mixedSubstring(str, chineseLen, englishLen) {
   let result = "";
   let count = 0;
@@ -371,3 +372,13 @@ export function findItemNested(enumData: any, callValue: any, value: string, chi
     if (current[children]) return findItemNested(current[children], callValue, value, children);
   }, null);
 }
+
+/**
+ * 千分符
+ * @param {Number | String} num
+ */
+export const toVisualThousands = num => {
+  const reg = /\d{1,3}(?=(\d{3})+$)/g;
+  if (!num) return 0;
+  return `${parseInt(num)}`.replace(reg, "$&,");
+};

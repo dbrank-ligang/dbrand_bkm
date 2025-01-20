@@ -38,22 +38,86 @@
             </div>
           </div>
         </div>
-        <div id="time" class="countBox">
+        <div id="startTime" class="countBox">
           <div class="countBox_left">
-            <div class="row_1"></div>
-            <div class="row_2"></div>
-            <div class="row_3"></div>
-            <div class="row_4"></div>
+            <div class="row_1">
+              <div class="row_1_tag1">
+                <div>No.999</div>
+                <div>品牌营销BKM案例2023年榜</div>
+              </div>
+            </div>
+            <div class="row_2">
+              <div class="row_2_tag1">
+                <div style="margin-top: 30px">传播效果价值</div>
+                <div style="margin-top: 5px; font-weight: 600">
+                  26,351,512
+                  <span style="font-style: italic">DB</span>
+                </div>
+              </div>
+              <div class="row_2_tag2">
+                <div style="margin-top: 30px">内容总条数</div>
+                <div style="margin-top: 5px"><span style="font-weight: 600">26,351</span>条</div>
+              </div>
+              <div class="row_2_tag3">
+                <div style="margin-top: 25px">内容<br />传播效度</div>
+                <div style="margin-top: 5px; font-weight: 600">10.82%</div>
+              </div>
+            </div>
+            <div class="row_3">
+              <div class="row_3_tag1">
+                <div class="row_3_tag1_tit">用户参与度</div>
+                <div class="row_3_tag1_num">10.82%</div>
+              </div>
+              <div class="row_3_tag2">
+                <div class="row_3_tag1_tit">全网好感度</div>
+                <div class="row_3_tag1_num">10.82%</div>
+              </div>
+              <div class="row_3_tag3">
+                <div class="row_3_tag1_tit">传播引爆度</div>
+                <div class="row_3_tag1_num">10.82%</div>
+              </div>
+            </div>
+            <div class="row_4">
+              <div class="row_4_tag1">
+                <div class="row_4_tag1_tit">用户参与度</div>
+                <div class="row_4_tag1_num">10.82%</div>
+              </div>
+              <div class="row_4_tag2">
+                <div class="row_4_tag1_tit">全网好感度</div>
+                <div class="row_4_tag1_num">10.82%</div>
+              </div>
+            </div>
           </div>
-          <div class="countBox_right"></div>
+          <div class="countBox_right">
+            <div><span style="font-weight: 700">【起止时间】</span>2024年10月19日-10月25日</div>
+            <div>
+              <span style="font-weight: 700">【案例简介】</span>
+              <span>
+                分娩，是件美好而又神圣的事情，可在很多产妇的回忆里，生孩时的疼痛却那么“刻骨铭心”。“无痛分娩”是分娩镇痛的通俗表达。人类在研究如何降低分娩疼痛上已走过百余年的历史，发展至今，无痛分娩已是一项成熟、安全的辅助分娩医疗手段。10月20日，在第21个世界镇痛日，由中国人口福利基金会、中国慈善家杂志联合主办，浙江省妇女儿童基金会公益执行，母婴品牌Babycare提供独家公益支持的“2024世界镇痛日无痛分娩公益行动”正式启动。蒋勤勤、姜潮、麦迪娜、刘璇、王媛可、孔维6位明星特别担任本次活动的爱心公益官，他们与全国政协常委、北京协和医院麻醉学系主任黄宇光，国家卫健委科研所生殖健康技术指导中心主任、国务院特殊津贴专家邹燕，北京大学第一医院妇产生殖医学中心主任杨慧霞三位专家一起，共同呼吁全社会对生育疼痛的关注，倡导“母爱无需疼痛来证明”。『数字品牌榜』以2024年10月19日-10月25日为时间窗口对Babycare世界镇痛日Campaign进行了分析。示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字
+              </span>
+            </div>
+          </div>
         </div>
+        <div id="introduce" class="innerBox">
+          <div class="nodeTag">【案例类型】</div>
+        </div>
+        <div id="highlights" class="innerBox"><div class="nodeTag">【案例亮点】</div></div>
       </div>
-      <div id="introduce" class="box2">案例介绍</div>
-      <div id="highlights" class="box2">案例亮点</div>
-      <div id="part2">part2</div>
-      <div id="spreadRhythm" class="box1">传播节奏</div>
-      <div id="medium" class="box2">媒介策略</div>
-      <div id="cooperation" class="box2">合作资源</div>
+      <div class="case_con1">
+        <div id="part2" class="moduleTitle">part2</div>
+        <div id="spreadRhythm"><div class="nodeTag">【传播节奏】</div></div>
+        <div id="medium" class="innerBox"><div class="nodeTag">【媒介策略】</div></div>
+        <div id="cooperation" class="innerBox"><div class="nodeTag">【合作资源】</div></div>
+        <div id="sourceMaterial" class="innerBox"><div class="nodeTag">【素材创意】</div></div>
+        <div id="spreadQuality" class="innerBox"><div class="nodeTag">【传播质量】</div></div>
+      </div>
+
+      <div class="case_con1">
+        <div id="part3" class="moduleTitle">part3结案点评</div>
+        <div id="learnFrom"><div class="nodeTag">【借鉴】</div></div>
+        <div id="challenge" class="innerBox"><div class="nodeTag">【挑战】</div></div>
+        <div id="referenceLink" class="innerBox"><div class="nodeTag">【参考链接】</div></div>
+      </div>
     </div>
   </div>
 </template>
@@ -70,7 +134,7 @@ const menuArr = ref([
     id: "part1",
     name: "part1项目信息",
     child: [
-      { id: "time", name: "起止时间" },
+      { id: "startTime", name: "起止时间" },
       { id: "introduce", name: "案例介绍" },
       { id: "highlights", name: "案例亮点" }
     ]
@@ -80,7 +144,7 @@ const menuArr = ref([
     name: "part2案例执行",
     child: [
       { id: "spreadRhythm", name: "传播节奏" },
-      { id: "medium", name: "媒介策略" },
+      { id: "medium", name: "媒介资源" },
       { id: "cooperation", name: "合作资源" },
       { id: "sourceMaterial", name: "素材创意" },
       { id: "spreadQuality", name: "传播质量" }
@@ -90,9 +154,9 @@ const menuArr = ref([
     id: "part3",
     name: "part3结案点评",
     child: [
-      { id: "time", name: "借鉴" },
-      { id: "highlights", name: "挑战" },
-      { id: "introduce", name: "参考链接" }
+      { id: "learnFrom", name: "借鉴" },
+      { id: "challenge", name: "挑战" },
+      { id: "referenceLink", name: "参考链接" }
     ]
   }
 ]);
@@ -119,7 +183,7 @@ const scrollChangeTab = () => {
     // 内容id集合
     const contentItems = [
       { idKey: "part1" },
-      { idKey: "time" },
+      { idKey: "startTime" },
       { idKey: "highlights" },
       { idKey: "introduce" },
       { idKey: "part2" },

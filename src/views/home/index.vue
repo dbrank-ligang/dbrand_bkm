@@ -129,7 +129,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="aboutBKM">
+<script setup lang="ts" name="home">
 // Import Swiper Vue.js components
 import { onMounted, ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";

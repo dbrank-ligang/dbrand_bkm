@@ -94,12 +94,10 @@
     }
     .inputBox {
       width: 220px;
+      height: 27px;
       display: flex;
-      .el-input {
-        height: 26px;
-        margin-right: 5px;
-    
-      }
+
+  
       .el-button {
         border: 1px solid #000;
       }
@@ -107,6 +105,12 @@
 
   }
 
+  :deep(.el-input)  {
+    width: 160px;
+    height: 27px !important;
+    line-height: 26px;
+  }
+  
   .buttonBox{
     text-align: right;
     .buttonStyle{
@@ -272,3 +276,40 @@
     }
   }
 }
+.el-pagination {
+  width: 300px;
+  margin: auto;
+  :deep(.btn-prev) {
+    background-color: #fff;
+    padding: 2px 3px;
+    span {
+      display: inline-block;
+      width: 100px;
+      background: #fff;
+      padding: 0px 5px;
+    }
+  }
+  :deep(.btn-next) {
+    background-color: #fff;
+    padding: 2px 3px;
+    span {
+      display: inline-block;
+      width: 100px;
+      background: #fff;
+      padding: 0px 5px;
+    }
+  }
+  :deep(.el-pager) {
+    margin: 0 10px;
+  }
+  :deep(.el-pager li ) {
+    background-color: #fff;
+    margin: 0 4px;
+  }
+  :deep(.el-pager li.is-active ) {
+      background-color: #ffd000;
+      margin: 0 4px;
+      color: #000;
+  }
+}
+

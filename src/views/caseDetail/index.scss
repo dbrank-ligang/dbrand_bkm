@@ -59,6 +59,7 @@
       width: 100%;
       height: auto;
       padding: 10px;
+      margin-bottom: 10px;
       background-color: #fff;
       &>div {
         // border: 1px solid red;
@@ -67,7 +68,7 @@
 
       // 大 title
       .moduleTitle {
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 700;
       }
       .timeBox {
@@ -142,49 +143,165 @@
       }
       .countBox {
         width: 100%;
-        height: 440px;
+        height: 100%;
         display: flex;
         justify-content: center;
-        border: 1px solid red;
+        padding-bottom: 20px;
+        // border-bottom: 1px dashed #ccc;s
+        // border: 1px solid red;
         .countBox_left {
           width: 387px;
-          height: 429px;
-          background-color: #ccc;
+          height: 100%;
           background-image: url('@/assets/images/innerBg.png');
-          background-size: 387px 429px;
+          background-size: 387px 100%;
+          background-repeat: no-repeat;
           padding: 50px 20px;
 
           & > div {
             width: 100%;
-            background-color: #000;
-            border-radius: 20px;
+            // background-color: #000;
+            border-radius: 15px;
             margin-bottom: 10px;
           }
           .row_1 {
             width: 100%;
             height: 60px;
             background-color: #ffe595;
+            .row_1_tag1 {
+              height: 100%;
+              display: flex;
+              align-items: center;
+            }
+            .row_1_tag1>div {
+              text-align: center;
+            }
+            .row_1_tag1>div:nth-child(1) {
+              width: 40%;
+              font-size: 20px;
+              font-weight: 700;
+            }
+            .row_1_tag1>div:nth-child(2) {
+              width: 70%;
+              font-size: 14px;
+              overflow: hidden;
+            }
+          }
+          .row_2 {
+            width: 100%;
+            height: 110px;
+            font-size: 14px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+
+            & > div {
+              height: 100%;
+              border-radius: 15px;
+            }
+            .row_2_tag1 {
+              width: 38%;
+              background-color: #fff4d2;
+            }
+            .row_2_tag2 {
+              width: 30%;
+              background-color: #ffe595;
+              margin-left: 9px;
+            }
+            .row_2_tag3 {
+              width: 27%;
+              background-color: #fff4d2;
+              margin-left: 9px;
+            }
+            
+          }
+          .row_3 {
+            width: 100%;
+            height: 90px;
+            font-size: 14px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+
+            & > div {
+              height: 100%;
+              border-radius: 15px;
+            }
+            .row_3_tag1 {
+              width: 28%;
+              background-color: #fff4d2;
+            }
+            .row_3_tag2 {
+              width: 35%;
+              background-color: #ffedb4;
+              margin-left: 9px;
+            }
+            .row_3_tag3 {
+              width: 41%;
+              background-color: #ffe8a2;
+              margin-left: 9px;
+            }
+            .row_3_tag1_tit {
+              margin-top: 25px;
+            }
+
+            .row_3_tag1_num {
+              margin-top: 5px; 
+              font-weight: 600;
+              font-size: 20px;
+            }
+          }
+          .row_4 {
+            width: 100%;
+            height: 60px;
+            font-size: 12px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+
+            & > div {
+              height: 100%;
+              border-radius: 15px;
+            }
+            .row_4_tag1 {
+              width: 40%;
+              background-color: #ffedb4;
+            }
+            .row_4_tag2 {
+              width: 58%;
+              background-color: #ffe595;
+              margin-left: 9px;
+            }
+            .row_4_tag1_tit {
+              margin-top: 10px;
+            }
+
+            .row_4_tag1_num {
+              margin-top: 3px; 
+              font-weight: 600;
+              font-size: 16px;
+            }
           }
         }
         .countBox_right {
           flex: 1;
           height: 100%;
-          background-color: #bbb;
+          margin-left: 25px;
+          // background-color: #bbb;
         }
       }
     }
     
-    .box1 {
+    .innerBox {
       width: 100%;
-      height: 400px;
-      background-color: #fff;
-      border: 1px solid red;
+      height: auto;
+      min-height: 100px;
+      // border: 1px solid red;
+      padding-top: 20px;
+      border-top: 1px dashed #ccc;
     }
-    .box2 {
-      width: 100%;
-      height: 400px;
-      border: 1px solid red;
-
+    .nodeTag {
+      font-size: 18px;
+      font-weight: 700;
     }
   }
 }

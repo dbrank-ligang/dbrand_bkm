@@ -47,8 +47,19 @@
           </div>
         </div>
         <div class="inputBox">
-          <el-input placeholder="请输入品牌名称"></el-input>
-          <el-button size="small">搜索</el-button>
+          <!-- <el-input placeholder="请输入品牌名称"></el-input> -->
+          <el-autocomplete
+            v-model="inputValue"
+            :fetch-suggestions="querySearch"
+            :trigger-on-focus="false"
+            clearable
+            placeholder="搜索品牌名称"
+            @keyup.enter="handleSearch"
+            value-key="showText"
+          >
+            <!-- <template #append><div @click="handleSearch" style="cursor: pointer">搜索</div></template> -->
+          </el-autocomplete>
+          <el-button size="small" @click="handleSearch1">搜索</el-button>
         </div>
       </div>
       <div class="tradeBox">
@@ -129,34 +140,34 @@
         <div class="searchTagList">
           <el-tag class="yearsTag" type="info" effect="plain"> {{ yearsItem.year }} </el-tag>
           <el-tag
-            v-if="tradeArrSelected"
+            v-if="tradeArrTag.length > 0"
             type="info"
             effect="plain"
             closable
             @close="handleSearchListClose('trade')"
             class="tradeTag"
           >
-            {{ tradeArrSelected && tradeArrSelected.join("、") }}
+            {{ tradeArrTag && tradeArrTag.join("、") }}
           </el-tag>
           <el-tag
-            v-if="brandArrSelected"
+            v-if="brandArrTag.length > 0"
             type="info"
             effect="plain"
             closable
             @close="handleSearchListClose('brand')"
             class="brandTag"
           >
-            {{ brandArrSelected && brandArrSelected.join("、") }}
+            {{ brandArrTag && brandArrTag.join("、") }}
           </el-tag>
           <el-tag
-            v-if="typesArrSelected"
+            v-if="typesArrTag.length > 0"
             type="info"
             effect="plain"
             closable
             @close="handleSearchListClose('types')"
             class="typesTag"
           >
-            {{ typesArrSelected && typesArrSelected.join("、") }}
+            {{ typesArrTag && typesArrTag.join("、") }}
           </el-tag>
         </div>
         <div class="listCon" v-for="monthItem in yearsItem.monthData" :key="monthItem">
@@ -193,17 +204,36 @@
         </div>
       </div>
     </div>
+    <el-pagination
+      small
+      background
+      prev-text="上一页"
+      next-text="下一页"
+      layout="prev, pager, next"
+      :total="500"
+      class="mt-4"
+      @change="changePage"
+    />
   </div>
 </template>
 
 <script setup lang="ts" name="bkmSearch">
-import { ref } from "vue";
-import { ElMessage } from "element-plus";
+import { h, ref, watch } from "vue";
+import { ElMessage, ElNotification } from "element-plus";
+import { searchMediaApi } from "@/api/modules/media";
+const inputValue = ref(""); // 品牌、类型搜索值
+const searchData = ref([] as any); // 联想搜索结果数组
+const notificationInstance = ref(null as any); // 定义一个引用来存储通知实例
+import QRCode from "@/assets/images/QRcode.jpg";
 
 const tradeArrSelected = ref(["汽车", "美妆个护", "运动装备"] as any); // 行业选中的数组
 const brandArrSelected = ref(["阿里巴巴", "海尔"] as any); // 品牌选中的数组
 const typesArrSelected = ref(["阿里巴巴", "海尔"] as any); // 类型选中的数组
-const dateArrSelected = ref(["2024", "2022"]); // 品牌选中的数组
+const dateArrSelected = ref(["2024", "2022"]); // 时间选中的数组
+// 搜索结果上面显示的tag
+const tradeArrTag = ref([] as any); // 行业数组
+const brandArrTag = ref([] as any); // 品牌数组
+const typesArrTag = ref([] as any); // 类型数组
 const tradeArr = ref([
   {
     title: "汽车",
@@ -278,7 +308,6 @@ const tradeArr = ref([
     number: 30
   }
 ]);
-
 const typesArr = ref([
   {
     title: "华为",
@@ -563,13 +592,16 @@ const handleClose = (type: string, tag: string) => {
 
 const handleSearchListClose = (type: string) => {
   if (type === "trade") {
-    tradeArrSelected.value = null;
+    tradeArrSelected.value = [];
+    tradeArrTag.value = [];
   }
   if (type === "brand") {
-    brandArrSelected.value = null;
+    brandArrSelected.value = [];
+    brandArrTag.value = [];
   }
   if (type === "types") {
-    typesArrSelected.value = null;
+    typesArrSelected.value = [];
+    typesArrTag.value = [];
   }
 };
 
@@ -578,7 +610,118 @@ const handleSearch = () => {
   console.log("行业：", tradeArrSelected.value);
   console.log("品牌：", brandArrSelected.value);
   console.log("类型：", typesArrSelected.value);
-  console.log(dataArr.value);
+  console.log("时间", dateArrSelected.value);
+  tradeArrTag.value = JSON.parse(JSON.stringify(tradeArrSelected.value));
+  brandArrTag.value = JSON.parse(JSON.stringify(brandArrSelected.value));
+  typesArrTag.value = JSON.parse(JSON.stringify(typesArrSelected.value));
+};
+
+watch([tradeArrSelected, brandArrSelected, typesArrSelected], handleSearch);
+
+const changePage = (currentPage: number, pageSize: number) => {
+  // 页码 每页条数
+  console.log(currentPage, pageSize);
+};
+
+// --------------------搜索逻辑----------------------------
+const querySearch = async (queryString: string, cb: any) => {
+  const { data } = await searchMediaApi({ keyword: queryString });
+  searchData.value = data;
+  cb(data);
+};
+
+// 点击搜索后:
+// 若检索数据为空，则弹框提示;
+// 若有检索数据，则直接跳转对应第一个媒体;
+const handleSearch1 = () => {
+  if (searchData.value.length <= 0) {
+    console.log("搜索数据的长度", searchData.value);
+    // 4.跳转到首页
+    notificationInstance.value = ElNotification({
+      dangerouslyUseHTMLString: true, // 允许使用HTML字符串
+      // message: htmlContent
+      message: h(
+        "div",
+        {
+          style: "display: flex;  justify-content: space-between;"
+        },
+        [
+          h(
+            "div",
+            {
+              style: "font-size: 13px; color: #333; line-height: 20px;"
+            },
+            [
+              h("span", "抱歉，您输入的品牌名称不准确或者未收录。请点击"),
+              h(
+                "a",
+                {
+                  // class: 'confirm-link', // 你可以添加一个自定义类来应用样式
+                  onClick: handleNoticClose, // 绑定点击事件
+                  style: "text-decoration: underline; cursor: pointer; color: #008efa;"
+                },
+                "重新搜索"
+              ),
+              h("span", "，或者点击"),
+              h(
+                "a",
+                {
+                  onClick: handleNoticAdd, // 绑定点击事件
+                  style: "text-decoration: underline; cursor: pointer; color: #008efa;"
+                },
+                "我要新增"
+              )
+            ]
+          )
+        ]
+      ),
+      duration: 9000
+    });
+  }
+};
+
+// 点击重新搜索
+const handleNoticClose = () => {
+  console.log("重新搜索按钮被点击");
+  // 在这里添加你的逻辑，比如关闭通知、发送请求等
+  // 通知
+  if (notificationInstance.value) {
+    notificationInstance.value.close();
+  }
+};
+
+// 点击我要新增
+const handleNoticAdd = () => {
+  console.log("我要新增按钮被点击");
+  if (notificationInstance.value) {
+    notificationInstance.value.close();
+  }
+  // 显示二维码 Notification
+  ElNotification({
+    dangerouslyUseHTMLString: true, // 允许使用HTML字符串
+    // message: htmlContent
+    message: h(
+      "div",
+      {
+        style: "display: flex;  justify-content: space-between;"
+      },
+      [
+        h("img", {
+          src: QRCode,
+          alt: "Notification Image",
+          style: "width: 100px; height: 100px; margin-right: 10px; vertical-align: middle; display: inline-block;"
+        }),
+        h(
+          "div",
+          {
+            style: "font-size: 13px; color: #333; line-height: 20px; display: flex; flex-direction: column;align-self: center;"
+          },
+          [h("span", "收到您的需求！"), h("span", "我们会尽快处理，"), h("span", "可联系榜女郎获知更新进度")]
+        )
+      ]
+    ),
+    duration: 9000
+  });
 };
 </script>
 
