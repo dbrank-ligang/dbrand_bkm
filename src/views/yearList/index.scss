@@ -30,7 +30,7 @@
 }
 .yearList_con {
   width: 100%;
-  max-height: 610px;
+  max-height: 620px;
   // height: calc(100% - 70px);
   display: flex;
   justify-content: space-between;
@@ -121,16 +121,36 @@
   box-sizing: border-box;
 }
 
+:deep(.el-table .highlight-row .el-table__cell){
+  background-color: rgba(255, 255, 0 , 0.3); /* 你想要的背景颜色 */
+}
 
 ::v-deep .el-table .el-table__body-wrapper tbody tr td{
   box-sizing: border-box;
 }
+// 表格划过行添加阴影
 ::v-deep .el-table .el-table__body-wrapper tbody tr:hover{
   filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.2));
   background-color: #fff !important;
   td {
     background-color: #fff !important;
   }
+}
+::v-deep .el-table__inner-wrapper:before {
+  background-color: transparent !important;
+}
+
+.text1 {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+}
+.text2 {
+  line-height: 20px;
+  color: rgba(88, 88, 88, 1);
+  font-size: 12px;
+  margin: 50px 0;
 }
 
 .active {

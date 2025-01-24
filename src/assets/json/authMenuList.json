@@ -80,6 +80,22 @@
         "activeMenu":"/caseDetail/index",
         "isDisabled": false
       }
+    },
+    {
+      "path": "/bkmTable/index",
+      "name": "bkmTable",
+      "component": "/bkmTable/index",
+      "meta": {
+        "icon": "",
+        "title": "例子",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/bkmTable/index",
+        "isDisabled": false
+      }
     }
   ],
   "msg": "成功"
