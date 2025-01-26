@@ -8,11 +8,6 @@ export const LOGIN_URL: string = "/login";
 
 // 媒体详情页地址
 export const MEDIADETAIL: string = "/mediaDetail/index";
-// 负面地址
-export const NEGATIVE: string = "/negative/index";
-
-// 品牌对比
-export const BRANDRATIO: string = "/brandRatio/index";
 
 // 年榜页面
 export const YEARLIST: string = "/yearList/index";

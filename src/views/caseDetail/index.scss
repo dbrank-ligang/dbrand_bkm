@@ -338,7 +338,7 @@
       font-size: 14px;
       line-height: 24px;
       :deep(img){
-        max-width: 630px;
+        max-width: 720px;
         display: block;
         margin-top: 30px;
         margin-bottom:  10px;
@@ -440,6 +440,33 @@
         }
       }
      }
+  }
+}
+.typeBox {
+  width: 100%;
+  height: auto;
+  line-height: 30px;
+  display: flex;
+  margin-bottom: 20px;
+
+  .typeLabel{ 
+    width: 80px;
+    height: auto;
+  }
+  .typeList {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    .typeItem {
+      padding: 0px 10px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 4px;
+      background: rgba(255, 229, 149, 1);
+      border: 1px solid rgba(142, 142, 142, 1);
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
   }
 }
 
