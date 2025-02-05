@@ -102,7 +102,7 @@
       </div>
 
       <div class="hotReportBox">
-        <div class="hotReportTit">热门报告 <span>更多案例报告>></span></div>
+        <div class="hotReportTit">热门报告 <span @click="handleReport">更多案例报告>></span></div>
         <div class="hotReportCon">
           <div v-for="item in caseListData" :key="item">
             <img :src="item.imgUrl" />
@@ -138,6 +138,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import router from "@/routers";
 import { YEARLIST } from "@/config";
+import { CASEDETAIL } from "@/config";
 import { ElNotification } from "element-plus";
 
 const tabItems = ref(["周榜", "月榜", "年榜"]);
@@ -156,75 +157,89 @@ const carouseData = ref([
       {
         rank: "No.1",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日CampaignBabycare世界镇痛日CampaignBabycare世界镇痛日CampaignBabycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410302",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+        type: [
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销",
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销",
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销"
+        ],
         url: ""
       },
       {
-        num: "D2410303",
+        rank: "No.2",
+        num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
-        num: "D2410304",
+        rank: "No.3",
+        num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
-        num: "D2410305",
+        rank: "No.4",
+        num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
-        time: "2024年08月11日-2024年08月17日",
+        rank: "No.5",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
         url: ""
-      },
-      {
-        num: "D2410302",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410303",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410304",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410305",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
       }
+      // {
+      //   time: "2024年08月11日-2024年08月17日",
+      //   num: "D2410301",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410302",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410303",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410304",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410305",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // }
     ]
   },
   {
@@ -281,43 +296,43 @@ const carouseData = ref([
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
         url: ""
-      },
-      {
-        time: "2024年08月11日-2024年08月17日",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410302",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410303",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410304",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410305",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
       }
+      // {
+      //   time: "2024年08月11日-2024年08月17日",
+      //   num: "D2410301",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410302",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410303",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410304",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410305",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // }
     ]
   },
   {
@@ -326,76 +341,91 @@ const carouseData = ref([
     article: "文章文章文章文章3",
     msg: [
       {
+        rank: "No.1",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+        type: [
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销",
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销",
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销"
+        ],
         url: ""
       },
       {
+        rank: "No.2",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.3",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.4",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.5",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        time: "2024年08月11日-2024年08月17日",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410302",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410303",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410304",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410305",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
         url: ""
       }
+      // {
+      //   time: "2024年08月11日-2024年08月17日",
+      //   num: "D2410301",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410302",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410303",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410304",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410305",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // }
     ]
   },
   {
@@ -404,76 +434,91 @@ const carouseData = ref([
     article: "文章文章文章文章4",
     msg: [
       {
+        rank: "No.1",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+        type: [
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销",
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销",
+          "#案例类型",
+          "#内容营销",
+          "#ESG传播",
+          "#TVC营销"
+        ],
         url: ""
       },
       {
+        rank: "No.2",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.3",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.4",
         num: "D2410301",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
+        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
+        rank: "No.5",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        time: "2024年08月11日-2024年08月17日",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410302",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410303",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410304",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      },
-      {
-        num: "D2410305",
         name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
         url: ""
       }
+      // {
+      //   time: "2024年08月11日-2024年08月17日",
+      //   num: "D2410301",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410302",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410303",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410304",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // },
+      // {
+      //   num: "D2410305",
+      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+      //   DB: "1,123,345,456DB",
+      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
+      //   url: ""
+      // }
     ]
   }
 ]);
@@ -583,6 +628,18 @@ const onSwiperChange = index => {
 // 点击周、月榜里的每一个小卡片
 const handleCase = item => {
   console.log(item);
+  // 跳转到详情
+  let routerUrl = router.resolve({
+    path: CASEDETAIL
+  });
+  window.open(routerUrl.href, "_blank");
+};
+
+const handleReport = () => {
+  let routerUrl = router.resolve({
+    path: "/report/index"
+  });
+  window.open(routerUrl.href, "_blank");
 };
 
 // --------------------搜索逻辑----------------------------

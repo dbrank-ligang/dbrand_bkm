@@ -14,19 +14,19 @@
         </div>
       </div>
     </div>
-    <div class="case_con" ref="scrollContainer">
+    <div class="case_con" ref="scrollContainer" @copy.prevent="handleCopy">
       <div class="case_con1">
         <div class="timeBox">
           <div class="timeBox_left">
             <div class="date">
-              <div style="font-size: 28px">Oct.</div>
-              <div style="font-size: 28px">2024</div>
+              <div style="font-size: 28px">{{ dataObj.year }}</div>
+              <div style="font-size: 28px">{{ dataObj.month }}</div>
             </div>
             <div class="caseMessage">
-              <div>案例编号：D2410301</div>
+              <div>案例编号：{{ dataObj.caseId }}</div>
               <div style="margin-top: 15px">
                 <div>案例名称：</div>
-                <div style="font-weight: 500; color: #000; font-size: 20px" title="123">Babycare世界镇痛日Campaign</div>
+                <div style="font-weight: 500; color: #000; font-size: 20px" title="123">{{ dataObj.caseName }}</div>
               </div>
               <div class="brandNameBox">
                 <img src="http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960" />
@@ -45,49 +45,51 @@
           <div class="countBox_left">
             <div class="row_1">
               <div class="row_1_tag1">
-                <div>No.999</div>
-                <div>品牌营销BKM案例2023年榜</div>
+                <div>{{ dataObj.dataDetail.rank }}</div>
+                <div>{{ dataObj.dataDetail.annualRank }}</div>
               </div>
             </div>
             <div class="row_2">
               <div class="row_2_tag1">
                 <div style="margin-top: 30px">传播效果价值</div>
                 <div style="margin-top: 5px; font-weight: 600">
-                  26,351,512
+                  {{ dataObj.dataDetail.spreadValue }}
                   <span style="font-style: italic">DB</span>
                 </div>
               </div>
               <div class="row_2_tag2">
                 <div style="margin-top: 30px">内容总条数</div>
-                <div style="margin-top: 5px"><span style="font-weight: 600">26,351</span>条</div>
+                <div style="margin-top: 5px">
+                  <span style="font-weight: 600">{{ dataObj.dataDetail.contentNum }} </span>条
+                </div>
               </div>
               <div class="row_2_tag3">
                 <div style="margin-top: 25px">内容<br />传播效度</div>
-                <div style="margin-top: 5px; font-weight: 600">10.82%</div>
+                <div style="margin-top: 5px; font-weight: 600">{{ dataObj.dataDetail.spreadRate }}</div>
               </div>
             </div>
             <div class="row_3">
               <div class="row_3_tag1">
                 <div class="row_3_tag1_tit">用户参与度</div>
-                <div class="row_3_tag1_num">10.82%</div>
+                <div class="row_3_tag1_num">{{ dataObj.dataDetail.participationRate }}</div>
               </div>
               <div class="row_3_tag2">
                 <div class="row_3_tag1_tit">全网好感度</div>
-                <div class="row_3_tag1_num">10.82%</div>
+                <div class="row_3_tag1_num">{{ dataObj.dataDetail.goodOpinionRate }}</div>
               </div>
               <div class="row_3_tag3">
                 <div class="row_3_tag1_tit">传播引爆度</div>
-                <div class="row_3_tag1_num">10.82%</div>
+                <div class="row_3_tag1_num">{{ dataObj.dataDetail.fatigabilityRate }}</div>
               </div>
             </div>
             <div class="row_4">
               <div class="row_4_tag1">
-                <div class="row_4_tag1_tit">用户参与度</div>
-                <div class="row_4_tag1_num">10.82%</div>
+                <div class="row_4_tag1_tit">TOP10内容引爆力合计</div>
+                <div class="row_4_tag1_num">{{ dataObj.dataDetail.top10_donationRate }}</div>
               </div>
               <div class="row_4_tag2">
-                <div class="row_4_tag1_tit">全网好感度</div>
-                <div class="row_4_tag1_num">10.82%</div>
+                <div class="row_4_tag1_tit">单条内容引爆力均值</div>
+                <div class="row_4_tag1_num">{{ dataObj.dataDetail.singleMeanValue }}</div>
               </div>
             </div>
           </div>
@@ -182,16 +184,16 @@
             <div class="handTable">
               <div class="rowBox">
                 <div class="col_1">传播引爆度*</div>
-                <div class="col_3">{{ dataObj.detonateObj.detonate_rate }}</div>
+                <div class="col_3">{{ dataObj.spreadQuality.detonateObj.detonate_rate }}</div>
               </div>
               <div class="rowBox">
                 <div class="col_1">传播引爆力总值</div>
-                <div class="col_3">{{ dataObj.detonateObj.detonate_grossValue }}</div>
+                <div class="col_3">{{ dataObj.spreadQuality.detonateObj.detonate_grossValue }}</div>
               </div>
               <div class="rowBox">
                 <div class="col_0">头部引爆力</div>
                 <div class="col_2">TOP10内容DB值之和</div>
-                <div class="col_3">{{ dataObj.detonateObj.detonate_DB }}</div>
+                <div class="col_3">{{ dataObj.spreadQuality.detonateObj.detonate_DB }}</div>
               </div>
               <div class="rowBox mergeRow">
                 <div class="col_0">整体引爆力</div>
@@ -200,14 +202,14 @@
                   <div class="col_2_2">整体所有引爆条数DB值之和</div>
                 </div>
                 <div class="col_3">
-                  <div class="col_3_1">{{ dataObj.detonateObj.detonate_totle }}</div>
-                  <div class="col_3_2">{{ dataObj.detonateObj.detonate_wholeDB }}</div>
+                  <div class="col_3_1">{{ dataObj.spreadQuality.detonateObj.detonate_totle }}</div>
+                  <div class="col_3_2">{{ dataObj.spreadQuality.detonateObj.detonate_wholeDB }}</div>
                 </div>
               </div>
               <div class="rowBox">
                 <div class="col_0">平均引爆力</div>
                 <div class="col_2">单条内容引爆力均值</div>
-                <div class="col_3">{{ dataObj.detonateObj.detonate_meanValue }}</div>
+                <div class="col_3">{{ dataObj.spreadQuality.detonateObj.detonate_meanValue }}</div>
               </div>
               <div class="rowBox"></div>
             </div>
@@ -215,13 +217,13 @@
           </div>
           <div class="qualityBox">
             <div class="subtitle">(二) 传播引爆力TOP10内容列表</div>
-            <div class="top10listExplain" v-html="dataObj.top10ListObj.top10listExplain"></div>
-            <div class="top10listTitle">{{ dataObj.top10ListObj.top10listTitle }}</div>
-            <div class="top10listSource">数据来源：{{ dataObj.top10ListObj.top10listSource }}</div>
-            <div class="top10listTime">时间窗口：{{ dataObj.top10ListObj.top10listTime }}</div>
+            <div class="top10listExplain" v-html="dataObj.spreadQuality.top10ListObj.top10listExplain"></div>
+            <div class="top10listTitle">{{ dataObj.spreadQuality.top10ListObj.top10listTitle }}</div>
+            <div class="top10listSource">数据来源：{{ dataObj.spreadQuality.top10ListObj.top10listSource }}</div>
+            <div class="top10listTime">时间窗口：{{ dataObj.spreadQuality.top10ListObj.top10listTime }}</div>
             <div class="top10listTable">
               <el-table
-                :data="dataObj.top10ListObj.top10ListArr"
+                :data="dataObj.spreadQuality.top10ListObj.top10ListArr"
                 stripe
                 style="width: 100%"
                 :header-cell-style="{ background: '#ffdd00', color: '#000' }"
@@ -236,7 +238,7 @@
           </div>
           <div class="qualityBox">
             <div class="subtitle">(三) 传播关键词云图</div>
-            <div class="contentBox" v-html="dataObj.wordCloud"></div>
+            <div class="contentBox ciYunBox" v-html="dataObj.spreadQuality.wordCloud"></div>
           </div>
         </div>
         <!-- </div> -->
@@ -262,12 +264,34 @@
 </template>
 
 <script setup name="caseDetail">
-import { ref, onMounted, onUnmounted } from "vue";
+import { h, ref, onMounted, onUnmounted } from "vue";
 import { mixedSubstring } from "@/utils";
+import { ElNotification } from "element-plus";
+import QRCode from "@/assets/images/QRcode.jpg";
 
 const selectedItem = ref();
 const scrollContainer = ref(null);
 const dataObj = ref({
+  caseType: "A", // 案例页类型A/B
+  month: "2024", // 案例月份
+  year: "Oct", // 案例年份
+  caseId: "D2410301", // 案例编号
+  caseName: "Bayard世界镇痛日Campaign", // 案例名称;
+
+  coBrand: [{ iconUrl: "https://XXX.png", name: "品牌名称" }], // 联合品牌数组
+  // // 数据详情
+  dataDetail: {
+    rank: "No.99", //排名
+    annualRank: "品牌营销BKM案例2023年榜", //所属年榜
+    spreadValue: "26,351,512", //传播效果价值
+    contentNum: "26,351", //内容总条数
+    spreadRate: "10.82%", //内容传播度
+    participationRate: "10.82%", //用户参与度
+    goodOpinionRate: "10.82%", //全网好感度
+    fatigabilityRate: "10.82%", //传播引爆度
+    top10_donationRate: "10.82%", //TOP10内容引爆力合计
+    singleMeanValue: "10.82%" //单条内容引爆力均值
+  },
   startTime: "2024年11月28日-12月6日",
   highlights:
     "案例亮点,1、悬念营销，勾起粉丝兴趣和好奇心。在官宣代言人之前，蜜雪冰城在各大社交平台上进行了高调预热，放出了一张身穿紫色西装、打上紫色领带的无脸照片，并配上了调皮的互动文案“猜猜是谁？”，还给出了提示“肤白貌帅、能歌善舞、爱岗敬业”。这一波操作成功勾起了粉丝的兴趣，评论区瞬间热闹起来，网友们纷纷报上自家“爱豆”的名字，比如蝎子莱莱、黑大帅等等，为后续的官宣造足了声势<br/>2、“令人意内”的全旧代言人，进一步强化品牌IP。雪王作为蜜雪冰城的吉祥物，早已深入人心，具有较高的辨识度和亲和力。而且雪王之前已经是蜜雪冰城的品牌终身代言人，此次让雪王代言新饮品，不仅延续了品牌的特色，还进一步强化了雪王与蜜雪冰城的品牌关联。一场乌龙般的互动不仅拉近了与网友的距离，同时也为雪王这一IP形象树立起更为立体的人物性格。此外，蜜雪冰城一直都以低价著称，如果高价请流量明星代言，反而不利于品牌形象的塑造。<br/>3、低成本高效益。与明星代言相比，雪王代言的成本更低，但效果却毫不逊色，官宣代言人的推文在多个平台上都达到了10万+的点赞和评论。虽然得到了“全穷代言人”的称号，以及毒舌粉丝的锐评“代言费从左兜掏出来揣回右兜”，但也直接证明了本次营销的性价比之高。",
@@ -280,9 +304,9 @@ const dataObj = ref({
   introduce:
     "案例简介, 震惊！某国民品牌邀请顶流代言，居然分文没花！代言费左手倒右手，又回到了品牌的兜里。这到底是迫于资本的压力，还是品牌策略的一次大胆创新？这背后究竟隐藏着更为复杂的商业逻辑，还是不为人知的巨大秘密？ 欢迎阅读今天的走进案例之蜜雪冰城官宣雪王代言芋泥奶茶Campaign。 据悉，知名品牌蜜雪冰城于11月28日发布消息，称即将官宣“厚芋泥奶茶全球代言人”，并发布了一张身穿紫色西装、打着紫色领带的无脸照片，给出“肤白貌帅、能歌善舞、爱岗敬业”三个小提示，请网友们猜猜他是谁，成功勾起了众人兴趣。 就在大家众说纷纭的时候，官方正式揭晓了答案。原来，这位代言人就是大家所熟知的雪王。雪王作为蜜雪冰城的自有IP，其代言费用自然无需外流，完美实现了“代言费左手倒右手”的巧妙操作。 至此，这个谜团被彻底揭开。而这一品牌营销策略也得到了众多网友的称赞，认为既新颖又接地气，更在无形中加深了消费者对品牌的情感认同。 『数字品牌榜』以2024年11月28日-12月6日为时间窗口对蜜雪冰城官宣雪王代言芋泥奶茶Campaign进行了分析。",
   spreadRhythm:
-    '○ 11.28 蜜雪冰城称“厚芋泥奶茶全球代言人”即将揭晓，并让粉丝猜猜是谁；○ 11.29 蜜雪冰城官宣“厚芋泥奶茶全球代言人”是雪王，网友表示“太让人意内了”；#雪王自己官宣自己#话题在各平台发酵；<br/>○ 12.02 顶尖广告发布文章《史上“最穷”蜜雪冰城代言人，网友：没咖硬抬！》，获得较高数字品牌价值；<br/>○ 12.04 蜜雪冰城发布代言人雪王定制西装幕后vlog；中国饮品快报发布文章《蜜雪新代言人爆了，网友直呼请了个“永不担心塌房的明星”》；<img class="rich_pages wxw-img" data-backh="277" data-backw="532" data-cropselx1="0" data-cropselx2="532" data-cropsely1="0" data-cropsely2="296" data-imgfileid="100036849" data-ratio="0.5212962962962963" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_jpg/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IKDibniagmevdnW0PYpreyVX9UMX7xFxXkibPDLiafKeh9eghmeR4kSU2og/640?wx_fmt=jpeg&amp;from=appmsg" data-type="png" data-w="1080" style="vertical-align: middle;width: 100%;height: auto;">来源：『数字品牌榜』监测研究',
+    '传播节奏：○ 11.28 蜜雪冰城称“厚芋泥奶茶全球代言人”即将揭晓，并让粉丝猜猜是谁；○ 11.29 蜜雪冰城官宣“厚芋泥奶茶全球代言人”是雪王，网友表示“太让人意内了”；#雪王自己官宣自己#话题在各平台发酵；<br/>○ 12.02 顶尖广告发布文章《史上“最穷”蜜雪冰城代言人，网友：没咖硬抬！》，获得较高数字品牌价值；<br/>○ 12.04 蜜雪冰城发布代言人雪王定制西装幕后vlog；中国饮品快报发布文章《蜜雪新代言人爆了，网友直呼请了个“永不担心塌房的明星”》；<img class="rich_pages wxw-img" data-backh="277" data-backw="532" data-cropselx1="0" data-cropselx2="532" data-cropsely1="0" data-cropsely2="296" data-imgfileid="100036849" data-ratio="0.5212962962962963" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_jpg/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IKDibniagmevdnW0PYpreyVX9UMX7xFxXkibPDLiafKeh9eghmeR4kSU2og/640?wx_fmt=jpeg&amp;from=appmsg" data-type="png" data-w="1080" style="vertical-align: middle;width: 100%;height: auto;">来源：『数字品牌榜』监测研究',
   medium:
-    '按媒体源看，本案例媒介渠道分布主要集中在自媒体，大众自媒体的内容发布条数最多，企业自媒体收获的数字品牌价值最高；按平台看，主要集中在抖音，此外，微博、微信号、视频号在传播中也起到了关键作用。<img class="rich_pages wxw-img" src="https://mmbiz.qpic.cn/mmbiz_jpg/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7I8y867X6yaTCKnJMdJnx3ibjSO4VMWXnsjia3Ehsdv4KRc82FW9nmlcxQ/640?wx_fmt=jpeg&amp;from=appmsg" data-type="png"  style="vertical-align: middle;width: 100%;height: auto;margin-top: 30px;" /><img class="rich_pages wxw-img" data-backh="296" data-backw="532" data-cropselx1="0" data-cropselx2="532" data-cropsely1="0" data-cropsely2="296" data-imgfileid="100036852" data-ratio="0.5574074074074075" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_jpg/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IqlbYb9AdDn6Ez53WezDKibq34Y94r04XjVfM95GD9QmBgxNiad1Jbz4Q/640?wx_fmt=jpeg&amp;from=appmsg" data-type="png" data-w="1080" style="vertical-align: middle;width: 100%;height: auto;">来源：『数字品牌榜』监测研究',
+    '媒体策略：按媒体源看，本案例媒介渠道分布主要集中在自媒体，大众自媒体的内容发布条数最多，企业自媒体收获的数字品牌价值最高；按平台看，主要集中在抖音，此外，微博、微信号、视频号在传播中也起到了关键作用。<img class="rich_pages wxw-img" src="https://mmbiz.qpic.cn/mmbiz_jpg/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7I8y867X6yaTCKnJMdJnx3ibjSO4VMWXnsjia3Ehsdv4KRc82FW9nmlcxQ/640?wx_fmt=jpeg&amp;from=appmsg" data-type="png"  style="vertical-align: middle;width: 100%;height: auto;margin-top: 30px;" /><img class="rich_pages wxw-img" data-backh="296" data-backw="532" data-cropselx1="0" data-cropselx2="532" data-cropsely1="0" data-cropsely2="296" data-imgfileid="100036852" data-ratio="0.5574074074074075" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_jpg/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IqlbYb9AdDn6Ez53WezDKibq34Y94r04XjVfM95GD9QmBgxNiad1Jbz4Q/640?wx_fmt=jpeg&amp;from=appmsg" data-type="png" data-w="1080" style="vertical-align: middle;width: 100%;height: auto;">来源：『数字品牌榜』监测研究',
   cooperation: {
     // 两类合作资源
     starLinkage: ["蒋勤勤", "姜朝", "麦迪娜"],
@@ -296,51 +320,52 @@ const dataObj = ref({
   referenceLink:
     "1、'链接'《史上“最穷”蜜雪冰城代言人，网友：没咖硬抬！》https://mp.weixin.qq.com/s/jtKq8AS7VXk2qVtFm7Ig2g<br />2、《雪王为蜜雪冰城代言？？这真是硬炒作。。》https://mp.weixin.qq.com/s/RXw2eqGXGruYReFvRf0TRg<br />3、《蜜雪新代言人爆了，网友直呼请了个“永不担心塌房的明星”》https://mp.weixin.qq.com/s/FaNHc71yjMfCb0tKeq1o0A<br />4、《一个子不掏！蜜雪冰城推出全球代言人！》https://mp.weixin.qq.com/s/9Qg37UW1a1-1ec-5WRx7Wg<br />5、《蜜雪冰城官宣的全球代言人，居然不穿裤子》https://mp.weixin.qq.com/s/N0U1CL4WACL7WLT4E2OmEg<br />6、《蜜雪冰城喜提“最廉价全球代言人”，网友：这段时间不喝了！》https://mp.weixin.qq.com/s/YuG6n29MWhb1zFljTSCN5Q",
   // 传播质量
-  spreadQuality: "传播质量",
-  // （一）传播引爆度
-  detonateObj: {
-    detonate_rate: "24.55%", //引爆度
-    detonate_grossValue: "237,534,762", //传播引爆力总值
-    detonate_DB: " 281,536,932", // TOP10内容DB值之和
-    detonate_totle: "4,027", // 引爆条数
-    detonate_wholeDB: "684,426,433", //所有引爆条数DB值之和
-    detonate_meanValue: " 169,959" //单条内容引爆力均值
-  },
-  // （二）传播引爆力TOP10内容列表
-  top10ListObj: {
-    top10listExplain:
-      "本次Campaign TOP10内容中，有6条内容来自@蜜雪冰城 官方账号，数字品牌价值最高的两条分别来自抖音和视频号平台。",
-    top10listTitle: "蜜雪冰城官宣雪王代言与你奶茶Campaign关键文章TOP10列表",
-    top10listSource: "数字品牌榜",
-    top10listTime: "2024.11.28-2024.12.06",
-    top10ListArr: [
-      {
-        date: "2016-05-02",
-        title: "关于每一位奶妈在产房的爱与用气",
-        platform: "视频号",
-        source: "Babycare品牌官方号",
-        dbValue: "3,322,500"
-      },
-      {
-        date: "2016-05-02",
-        title: "#母爱无需疼痛来证明林市为无痛分娩转发。疼痛不会让爱变多，但爱会让疼痛减少。",
-        platform: "微博",
-        source: "Babycare",
-        dbValue: "3,322,500"
-      },
-      {
-        date: "2016-05-02",
-        title:
-          "去年7月，一位产妇按到朋友在五月天演唱会上的来电，用现场点歌的方式为产房内的她加油。这一片段被多位观众记录成短视频，引发了广泛关注。今年世界镇痛日，@中国人口福利基金会@中国慈善家杂志联合@babycare共同发布#母爱无需疼痛来证明#2024无痛分观公益行动主题《让我照顾你》。",
-        platform: "微博",
-        source: "中国慈善家杂志",
-        dbValue: "3,322,500"
-      }
-    ]
-  },
-  // （三）传播关键词云图
-  wordCloud:
-    '词云图，在本次Campaign中，“雪王”“代言人”“官宣自己”等成为核心关键词，有效触达用户认知。代表芋泥和雪王新皮肤的“紫色”也被频繁提及，此外，雪王用来形容自己的“能歌善舞、爱岗敬业、肤白貌美”等词汇也给网友留下了深刻印象。<img class="rich_pages wxw-img" data-imgfileid="100036860" data-ratio="1.1347222222222222" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IOvicMhorncTiaFuOb3bCqXVYVto5BQadqhq8o7o8HTib06tPNCcibdjbAQ/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="720" style="vertical-align: middle;width: 100%;">来源：『数字品牌榜』监测研究'
+  spreadQuality: {
+    // （一）传播引爆度
+    detonateObj: {
+      detonate_rate: "24.55%", //引爆度
+      detonate_grossValue: "237,534,762", //传播引爆力总值
+      detonate_DB: " 281,536,932", // TOP10内容DB值之和
+      detonate_totle: "4,027", // 引爆条数
+      detonate_wholeDB: "684,426,433", //所有引爆条数DB值之和
+      detonate_meanValue: " 169,959" //单条内容引爆力均值
+    },
+    // （二）传播引爆力TOP10内容列表
+    top10ListObj: {
+      top10listExplain:
+        "本次Campaign TOP10内容中，有6条内容来自@蜜雪冰城 官方账号，数字品牌价值最高的两条分别来自抖音和视频号平台。",
+      top10listTitle: "蜜雪冰城官宣雪王代言与你奶茶Campaign关键文章TOP10列表",
+      top10listSource: "数字品牌榜",
+      top10listTime: "2024.11.28-2024.12.06",
+      top10ListArr: [
+        {
+          date: "2016-05-02",
+          title: "关于每一位奶妈在产房的爱与用气",
+          platform: "视频号",
+          source: "Babycare品牌官方号",
+          dbValue: "3,322,500"
+        },
+        {
+          date: "2016-05-02",
+          title: "#母爱无需疼痛来证明林市为无痛分娩转发。疼痛不会让爱变多，但爱会让疼痛减少。",
+          platform: "微博",
+          source: "Babycare",
+          dbValue: "3,322,500"
+        },
+        {
+          date: "2016-05-02",
+          title:
+            "去年7月，一位产妇按到朋友在五月天演唱会上的来电，用现场点歌的方式为产房内的她加油。这一片段被多位观众记录成短视频，引发了广泛关注。今年世界镇痛日，@中国人口福利基金会@中国慈善家杂志联合@babycare共同发布#母爱无需疼痛来证明#2024无痛分观公益行动主题《让我照顾你》。",
+          platform: "微博",
+          source: "中国慈善家杂志",
+          dbValue: "3,322,500"
+        }
+      ]
+    },
+    // （三）传播关键词云图
+    wordCloud:
+      '词云图，在本次Campaign中，“雪王”“代言人”“官宣自己”等成为核心关键词，有效触达用户认知。代表芋泥和雪王新皮肤的“紫色”也被频繁提及，此外，雪王用来形容自己的“能歌善舞、爱岗敬业、肤白貌美”等词汇也给网友留下了深刻印象。<img class="rich_pages wxw-img" data-imgfileid="100036860" data-ratio="1.1347222222222222" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IOvicMhorncTiaFuOb3bCqXVYVto5BQadqhq8o7o8HTib06tPNCcibdjbAQ/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="720" style="vertical-align: middle;width: 100%;">来源：『数字品牌榜』监测研究'
+  }
 });
 
 const menuArr = ref([
@@ -390,9 +415,7 @@ const selectItem = id => {
     behavior: "smooth"
   });
 };
-onMounted(async () => {
-  scrollChangeTab();
-});
+
 const scrollChangeTab = () => {
   window.addEventListener("scroll", () => {
     // 内容id集合
@@ -419,6 +442,48 @@ const scrollChangeTab = () => {
   });
 };
 
+const handleCopy = () => {
+  // 你可以在这里添加任何你希望在复制事件被阻止时执行的逻辑
+  // 但由于我们已经使用了 `.prevent` 修饰符，所以这个方法实际上不会被调用
+  // ElMessage.warning("禁止非付费用户复制文本，需联系棒女郎成为付费会员~");
+  // 显示二维码 Notification
+  ElNotification({
+    dangerouslyUseHTMLString: true, // 允许使用HTML字符串
+    // message: htmlContent
+    message: h(
+      "div",
+      {
+        style: "display: flex;  justify-content: space-between;"
+      },
+      [
+        h("img", {
+          src: QRCode,
+          alt: "Notification Image",
+          style: "width: 100px; height: 100px; margin-right: 10px; vertical-align: middle; display: inline-block;"
+        }),
+        h(
+          "div",
+          {
+            style: "font-size: 13px; color: #333; line-height: 20px; display: flex; flex-direction: column;align-self: center;"
+          },
+          [h("span", "禁止非付费用户复制文本，需联系榜女郎成为付费会员~")]
+        )
+      ]
+    ),
+    duration: 9000
+  });
+};
+// const flattenedChildren = computed(() => {
+//   return menuArr.value.flatMap(item => item.child);
+// });
+
+onMounted(async () => {
+  scrollChangeTab();
+  // console.log("菜单子级", flattenedChildren);
+  // const mergedChildren = menuArr.value.flatMap(item => item.child.name);
+  // console.log(mergedChildren);
+  console.log(menuArr.value.map(item => item.child.name));
+});
 // 清理事件监听器
 onUnmounted(() => {
   window.removeEventListener("scroll", () => {

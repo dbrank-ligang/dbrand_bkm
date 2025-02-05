@@ -420,21 +420,21 @@ const dataArr = ref([
             num: "案例编号1",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号2",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号3",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           }
         ]
       },
@@ -446,21 +446,21 @@ const dataArr = ref([
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           }
         ]
       }
@@ -478,21 +478,21 @@ const dataArr = ref([
             num: "案例编号1",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号2",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号3",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           }
         ]
       },
@@ -504,21 +504,21 @@ const dataArr = ref([
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           }
         ]
       },
@@ -530,21 +530,21 @@ const dataArr = ref([
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           },
           {
             imgUrl: "http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
             num: "案例编号",
             name: "案例名称",
             DB: "数字品牌价值",
-            type: ["#案例类型", "内容营销"]
+            type: "#案例类型、#内容营销"
           }
         ]
       }

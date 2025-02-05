@@ -17,7 +17,7 @@
     width: 146px;
     height: 100%;
     overflow: auto;
-    border: 1px solid red;
+    // border: 1px solid red;
     font-size: 16px;
     color: #000;
     padding-top: 30px;
@@ -44,13 +44,25 @@
     width: 95px;
     height: 32px;
     background-color: rgba(254, 255, 186, 1);
+    &::before {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      content: "";
+      border: 1px solid #5d5d5d;
+      background-color: #ffdd00;
+      position: relative;
+      bottom: 2px;
+      right: 5px;
+    }
    }
   }
   .case_con {
     // flex: 1;
     width: 1054px;
     padding: 10px;
-    border: 1px solid red;
+    // border: 1px solid red;
     overflow: auto;
     position: relative;
     // left: 146px;
@@ -331,6 +343,8 @@
         content: "";
         border: 1px solid #5d5d5d;
         background-color: #ffdd00;
+        position: relative;
+        bottom: 2px;
       }
     }
     .contentBox {
@@ -338,7 +352,7 @@
       font-size: 14px;
       line-height: 24px;
       :deep(img){
-        max-width: 720px;
+        // max-width: 720px;
         display: block;
         margin-top: 30px;
         margin-bottom:  10px;
@@ -460,7 +474,7 @@
     .typeItem {
       padding: 0px 10px;
       height: 30px;
-      line-height: 30px;
+      line-height: 28px;
       border-radius: 4px;
       background: rgba(255, 229, 149, 1);
       border: 1px solid rgba(142, 142, 142, 1);
@@ -473,4 +487,10 @@
 #startTime {
   display: flex;
   align-items: baseline;
+}
+
+.ciYunBox {
+  img {
+    max-width: 700;
+  }
 }

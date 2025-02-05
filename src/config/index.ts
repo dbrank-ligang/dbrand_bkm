@@ -9,6 +9,9 @@ export const LOGIN_URL: string = "/login";
 // 媒体详情页地址
 export const MEDIADETAIL: string = "/mediaDetail/index";
 
+// 案例详情页地址
+export const CASEDETAIL: string = "/caseDetail/index";
+
 // 年榜页面
 export const YEARLIST: string = "/yearList/index";
 

@@ -1,7 +1,7 @@
 {
   "name": "",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.0.0",
   "type": "module",
   "description": " open source management system",
   "author": {
@@ -10,7 +10,7 @@
     "url": ""
   },
   "license": "MIT",
-  "homepage": "",
+  "homepage": "/bkm/",
   "repository": {
     "type": "git",
     "url": ""

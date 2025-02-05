@@ -34,6 +34,22 @@
       }
     },
     {
+      "path": "/report/index",
+      "name": "report",
+      "component": "/report/index",
+      "meta": {
+        "icon": "",
+        "title": "案例报告",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true,
+        "activeMenu":"/report/index",
+        "isDisabled": false
+      }
+    },
+    {
       "path": "/yearList/index",
       "name": "yearList",
       "component": "/yearList/index",
@@ -50,22 +66,6 @@
       }
     },
     {
-      "path": "/bkmSource/index",
-      "name": "bkmSource",
-      "component": "/bkmSource/index",
-      "meta": {
-        "icon": "",
-        "title": "素材库",
-        "isLink": "",
-        "isHide": false,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true,
-        "activeMenu":"/bkmSource/index",
-        "isDisabled": false
-      }
-    },
-    {
       "path": "/caseDetail/index",
       "name": "caseDetail",
       "component": "/caseDetail/index",
@@ -73,30 +73,15 @@
         "icon": "",
         "title": "案例详情",
         "isLink": "",
-        "isHide": false,
+        "isHide": true,
         "isFull": false,
         "isAffix": false,
         "isKeepAlive": true,
         "activeMenu":"/caseDetail/index",
         "isDisabled": false
       }
-    },
-    {
-      "path": "/bkmTable/index",
-      "name": "bkmTable",
-      "component": "/bkmTable/index",
-      "meta": {
-        "icon": "",
-        "title": "例子",
-        "isLink": "",
-        "isHide": false,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true,
-        "activeMenu":"/bkmTable/index",
-        "isDisabled": false
-      }
     }
   ],
   "msg": "成功"
 }
+
