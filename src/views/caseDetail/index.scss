@@ -128,7 +128,7 @@
             align-items: center;
             
          
-            div:nth-child(2) {
+            .caseNameBox {
               height: 30px;
               overflow: hidden;
               display: flex;
@@ -147,15 +147,20 @@
                 text-overflow: ellipsis;
               }
             }
-            .brandNameBox {
+          }
+          .brandNameBox {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            .brandItem {
               display: flex;
               align-items: center;
-              margin-top: 15px;
               img {
                 width: 48px;
                 height: 48px;
-                // border-radius: 50%;
-                margin-right: 10px;
+                border-radius: 50%;
+                margin-right: 5px;
+                border: 1px solid #f1f1f1;
               }
             }
           }
@@ -196,7 +201,7 @@
           .row_1 {
             width: 100%;
             height: 60px;
-            background-color: #ffe595;
+            background-color: rgba(255, 234, 172, 1);;
             .row_1_tag1 {
               height: 100%;
               display: flex;
@@ -230,16 +235,16 @@
             }
             .row_2_tag1 {
               width: 38%;
-              background-color: #fff4d2;
+              background-color: rgba(255, 229, 149, 1);;
             }
             .row_2_tag2 {
               width: 30%;
-              background-color: #ffe595;
+              background-color: rgba(255, 237, 180, 1);;
               margin-left: 9px;
             }
             .row_2_tag3 {
               width: 27%;
-              background-color: #fff4d2;
+              background-color: rgba(255, 229, 149, 1);;
               margin-left: 9px;
             }
             
@@ -258,16 +263,16 @@
             }
             .row_3_tag1 {
               width: 28%;
-              background-color: #fff4d2;
+              background-color: rgba(255, 243, 204, 1);;
             }
             .row_3_tag2 {
               width: 35%;
-              background-color: #ffedb4;
+              background-color: rgba(255, 246, 202, 1);;
               margin-left: 9px;
             }
             .row_3_tag3 {
               width: 41%;
-              background-color: #ffe8a2;
+              background-color: rgba(255, 239, 190, 1);;
               margin-left: 9px;
             }
             .row_3_tag1_tit {
@@ -293,12 +298,12 @@
               border-radius: 15px;
             }
             .row_4_tag1 {
-              width: 40%;
-              background-color: #ffedb4;
+              width: 50%;
+              background-color: rgba(255, 234, 172, 1);;
             }
             .row_4_tag2 {
-              width: 58%;
-              background-color: #ffe595;
+              width: 48%;
+              background-color: rgba(255, 234, 172, 1);;
               margin-left: 9px;
             }
             .row_4_tag1_tit {

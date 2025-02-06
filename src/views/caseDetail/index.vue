@@ -5,7 +5,10 @@
         <div class="oneLevel menu" @click="selectItem(item.id)">{{ item.name }}</div>
         <div
           class="twoLevel menu"
-          :style="{ backgroundColor: selectedItem === childItem.id ? '#ffdd00' : '' }"
+          :style="{
+            backgroundColor: selectedItem === childItem.id ? '#ffdd00' : '',
+            display: childItem.isShow ? 'block' : 'none'
+          }"
           v-for="childItem in item.child"
           :key="childItem.name"
           @click="selectItem(childItem.id)"
@@ -24,13 +27,14 @@
             </div>
             <div class="caseMessage">
               <div>案例编号：{{ dataObj.caseId }}</div>
-              <div style="margin-top: 15px">
+              <div class="caseNameBox" style="margin-top: 15px">
                 <div>案例名称：</div>
                 <div style="font-weight: 500; color: #000; font-size: 20px" title="123">{{ dataObj.caseName }}</div>
               </div>
               <div class="brandNameBox">
-                <img src="http://gips2.baidu.com/it/u=195724436,3554684702&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960" />
-                品牌名称
+                <div class="brandItem" v-for="item in dataObj.coBrand" :key="item">
+                  <img :src="item.iconUrl" /> {{ item.name }}
+                </div>
               </div>
             </div>
           </div>
@@ -54,7 +58,8 @@
                 <div style="margin-top: 30px">传播效果价值</div>
                 <div style="margin-top: 5px; font-weight: 600">
                   {{ dataObj.dataDetail.spreadValue }}
-                  <span style="font-style: italic">DB</span>
+                  <!-- <span style="font-style: italic">DB</span> -->
+                  <span style="font-size: 14px">DB</span>
                 </div>
               </div>
               <div class="row_2_tag2">
@@ -85,11 +90,17 @@
             <div class="row_4">
               <div class="row_4_tag1">
                 <div class="row_4_tag1_tit">TOP10内容引爆力合计</div>
-                <div class="row_4_tag1_num">{{ dataObj.dataDetail.top10_donationRate }}</div>
+                <div class="row_4_tag1_num">
+                  {{ dataObj.dataDetail.top10_donationRate }}
+                  <span style="font-size: 14px">DB</span>
+                </div>
               </div>
               <div class="row_4_tag2">
                 <div class="row_4_tag1_tit">单条内容引爆力均值</div>
-                <div class="row_4_tag1_num">{{ dataObj.dataDetail.singleMeanValue }}</div>
+                <div class="row_4_tag1_num">
+                  {{ dataObj.dataDetail.singleMeanValue }}
+                  <span style="font-size: 14px">DB</span>
+                </div>
               </div>
             </div>
           </div>
@@ -107,8 +118,8 @@
         </div>
         <div id="caseType" class="innerBox">
           <div class="nodeTag">【案例类型】</div>
-          <div class="contentBox">
-            <div class="typeBox" v-if="dataObj.caseType.taskType">
+          <div class="contentBox" v-if="dataObj.caseType">
+            <div class="typeBox" v-if="dataObj.caseType.taskType && dataObj.caseType.taskType.length > 0">
               <div class="typeLabel">任务类型</div>
               <div class="typeList">
                 <div class="typeItem" v-for="item in dataObj.caseType.taskType" :key="item" :title="item">
@@ -117,7 +128,7 @@
               </div>
             </div>
 
-            <div class="typeBox" v-if="dataObj.caseType.contentType">
+            <div class="typeBox" v-if="dataObj.caseType.contentType && dataObj.caseType.contentType.length > 0">
               <div class="typeLabel">内容类型</div>
               <div class="typeList">
                 <div class="typeItem" v-for="item in dataObj.caseType.contentType" :key="item" :title="item">
@@ -126,7 +137,7 @@
               </div>
             </div>
 
-            <div class="typeBox" v-if="dataObj.caseType.techniqueType">
+            <div class="typeBox" v-if="dataObj.caseType.techniqueType && dataObj.caseType.techniqueType.length > 0">
               <div class="typeLabel">手法类型</div>
               <div class="typeList">
                 <div class="typeItem" v-for="item in dataObj.caseType.techniqueType" :key="item" :title="item">
@@ -153,8 +164,8 @@
         </div>
         <div id="cooperation" class="innerBox">
           <div class="nodeTag">【合作资源】</div>
-          <div class="contentBox">
-            <div class="typeBox" v-if="dataObj.cooperation.starLinkage">
+          <div class="contentBox" v-if="dataObj.cooperation">
+            <div class="typeBox" v-if="dataObj.cooperation.starLinkage && dataObj.cooperation.starLinkage.length > 0">
               <div class="typeLabel">明星联动</div>
               <div class="typeList">
                 <div class="typeItem" v-for="item in dataObj.cooperation.starLinkage" :key="item" :title="item">
@@ -163,7 +174,7 @@
               </div>
             </div>
 
-            <div class="typeBox" v-if="dataObj.cooperation.organization">
+            <div class="typeBox" v-if="dataObj.cooperation.organization && dataObj.cooperation.organization.length > 0">
               <div class="typeLabel">组织结构</div>
               <div class="typeList">
                 <div class="typeItem" v-for="item in dataObj.cooperation.organization" :key="item" :title="item">
@@ -272,13 +283,16 @@ import QRCode from "@/assets/images/QRcode.jpg";
 const selectedItem = ref();
 const scrollContainer = ref(null);
 const dataObj = ref({
-  caseType: "A", // 案例页类型A/B
+  // casePageType: "A", // 案例页类型A/B
   month: "2024", // 案例月份
   year: "Oct", // 案例年份
   caseId: "D2410301", // 案例编号
   caseName: "Bayard世界镇痛日Campaign", // 案例名称;
-
-  coBrand: [{ iconUrl: "https://XXX.png", name: "品牌名称" }], // 联合品牌数组
+  coBrand: [
+    { iconUrl: "https://dbrank.net/digitalAssets/resources/img/LOGO/363.png", name: "品牌名称" },
+    { iconUrl: "https://dbrank.net/digitalAssets/resources/img/LOGO/70.png", name: "品牌名称" },
+    { iconUrl: "https://dbrank.net/digitalAssets/resources/img/LOGO/75.png", name: "品牌名称" }
+  ], // 联合品牌数组
   // // 数据详情
   dataDetail: {
     rank: "No.99", //排名
@@ -289,12 +303,13 @@ const dataObj = ref({
     participationRate: "10.82%", //用户参与度
     goodOpinionRate: "10.82%", //全网好感度
     fatigabilityRate: "10.82%", //传播引爆度
-    top10_donationRate: "10.82%", //TOP10内容引爆力合计
-    singleMeanValue: "10.82%" //单条内容引爆力均值
+    top10_donationRate: "44,927,128", //TOP10内容引爆力合计
+    singleMeanValue: "44,927,128" //单条内容引爆力均值
   },
   startTime: "2024年11月28日-12月6日",
   highlights:
     "案例亮点,1、悬念营销，勾起粉丝兴趣和好奇心。在官宣代言人之前，蜜雪冰城在各大社交平台上进行了高调预热，放出了一张身穿紫色西装、打上紫色领带的无脸照片，并配上了调皮的互动文案“猜猜是谁？”，还给出了提示“肤白貌帅、能歌善舞、爱岗敬业”。这一波操作成功勾起了粉丝的兴趣，评论区瞬间热闹起来，网友们纷纷报上自家“爱豆”的名字，比如蝎子莱莱、黑大帅等等，为后续的官宣造足了声势<br/>2、“令人意内”的全旧代言人，进一步强化品牌IP。雪王作为蜜雪冰城的吉祥物，早已深入人心，具有较高的辨识度和亲和力。而且雪王之前已经是蜜雪冰城的品牌终身代言人，此次让雪王代言新饮品，不仅延续了品牌的特色，还进一步强化了雪王与蜜雪冰城的品牌关联。一场乌龙般的互动不仅拉近了与网友的距离，同时也为雪王这一IP形象树立起更为立体的人物性格。此外，蜜雪冰城一直都以低价著称，如果高价请流量明星代言，反而不利于品牌形象的塑造。<br/>3、低成本高效益。与明星代言相比，雪王代言的成本更低，但效果却毫不逊色，官宣代言人的推文在多个平台上都达到了10万+的点赞和评论。虽然得到了“全穷代言人”的称号，以及毒舌粉丝的锐评“代言费从左兜掏出来揣回右兜”，但也直接证明了本次营销的性价比之高。",
+  // caseType: { taskType: [] },
   caseType: {
     // 三种案例类型
     taskType: ["任务类型类型", "任务类型123", "任务类型", "任务类型"],
@@ -316,7 +331,7 @@ const dataObj = ref({
     '1、"素材创意",创意性剪影海报<br/>蜜雪冰城在官宣代言人之前发布了悬念海报，通过剪影和暗示的方式引发了网友们的广泛猜测和讨论。并且，蜜雪冰城还给出了代言人的特点提示“肤白貌帅、能歌善舞、爱岗敬业”，更是激起了网友的好奇心，评论区热闹非凡。<img class="rich_pages wxw-img" data-imgfileid="100036856" data-ratio="1.7802503477051461" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IPZacL3G8k6ZcK3Bic7wuBl4GicZylo9M4TVYNqJE6M5KZGzqXhP7SpEw/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="719" style="vertical-align: middle;width: 100%;">来源：微博@蜜雪冰城<br />2、变装视频及幕后花絮雪王这次代言自家的新饮品，最大（唯一）的改变就是换了一身紫色新装，与“厚芋泥奶茶”相得益彰，所以后续宣传也以此为切入点。11月30日，蜜雪冰城发布了一段翻拍影视片段的视频，因为“先生，这里衣冠不整恕不招待”，所以雪王打上了领带、换上了西装，顺理成章完成了代言人的华丽转身。12月4日，蜜雪冰城发布雪王定制西装幕后vlog，雪王选了芋泥紫的颜色，并表示“新衣服搭配新身份，从今天起我就是厚芋泥奶茶全球代言人”，成功传播了品牌推出新饮品的信息。<br />3、自己玩自己，借梗营销当官方公布厚芋泥奶茶全球代言人就是雪王本人时，网友们纷纷表示“意料之外、情理之中”，并对此进行了各种吐槽和玩梗，比如“自己用自己”“公开了一个众所周知的事情”“好消息0个人想知道”。蜜雪冰城也趁机玩起了自己的梗，发布动态称“蜜雪冰城也是好起来了，竟然请顶流雪王代言”，进一步增加了话题的热度和讨论度。<img class="rich_pages wxw-img" data-imgfileid="100036855" data-ratio="1.0916666666666666" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IX6ILXUUF2I5qp2RFXkneYGhM9odR7HIqJnKicpD1sQqe5qqNAkU7Qmw/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="720" style="vertical-align: middle;width: 100%;"<br />来源：小红书',
   learnFrom:
     "1、‘借鉴’-代言人和品牌要有契合点<br />选择与品牌定位相符的代言人，有能提高品牌知名度、增强品牌形象、塑造品牌价值、吸引目标消费者、提高产品销量等等一系列好处。也就是说，代言人是要为品牌赋能与造势的，除了形象、气质要与品牌相契合，其流量、知名度必须高于品牌或者产品，否则就不知道是谁给谁代言了。一个负面例子是霸王茶姬，请了一堆流量明星线下站台，不仅很多人都不认识，而且明星还接连念错品牌，营销变营笑。<br />预热期间，粉丝在蜜雪冰城评论区猜测了数位明星，但知名度、影响力几乎没有能和雪王对等的，有网友说“雪王的形象太成功了，比任何明星都好使”。代言人的作用是锦上添花，对于本身就具有高知名度的品牌来说，代言人的国民度是一定要高于或跟品牌是一个等级的，或者是因为某现象级事件，在短期内有超高影响力的公众人物。<br />2、坚守品牌特色，发挥差异化优势<br />蜜雪冰城从没请过任何流量明星代言，一是为了节省成本，二是因为雪王这个IP深入人心，本身就是品牌的最佳代言人，而且永远没有塌房的风险。所以蜜雪冰城本次营销看似充满反差，其实就像网友说的在“意料之中”，自己代言自己，是蜜雪冰城一贯的特色和传统，也是区别于其他品牌的差异化打法。<br />其他品牌也应该认识到，在产品趋同的情况下，在营销中保持特色，是吸引消费者的好办法。比如瑞幸咖啡，疯狂联名、追热点、频繁更换代言人，虽然走了一条跟蜜雪冰城相反的“花心”之路，却始终在营销圈拥有一席之地，这也不失为差异化营销的好办法。",
-  challenge: "挑战",
+  // challenge: "挑战",
   referenceLink:
     "1、'链接'《史上“最穷”蜜雪冰城代言人，网友：没咖硬抬！》https://mp.weixin.qq.com/s/jtKq8AS7VXk2qVtFm7Ig2g<br />2、《雪王为蜜雪冰城代言？？这真是硬炒作。。》https://mp.weixin.qq.com/s/RXw2eqGXGruYReFvRf0TRg<br />3、《蜜雪新代言人爆了，网友直呼请了个“永不担心塌房的明星”》https://mp.weixin.qq.com/s/FaNHc71yjMfCb0tKeq1o0A<br />4、《一个子不掏！蜜雪冰城推出全球代言人！》https://mp.weixin.qq.com/s/9Qg37UW1a1-1ec-5WRx7Wg<br />5、《蜜雪冰城官宣的全球代言人，居然不穿裤子》https://mp.weixin.qq.com/s/N0U1CL4WACL7WLT4E2OmEg<br />6、《蜜雪冰城喜提“最廉价全球代言人”，网友：这段时间不喝了！》https://mp.weixin.qq.com/s/YuG6n29MWhb1zFljTSCN5Q",
   // 传播质量
@@ -479,10 +494,19 @@ const handleCopy = () => {
 
 onMounted(async () => {
   scrollChangeTab();
-  // console.log("菜单子级", flattenedChildren);
-  // const mergedChildren = menuArr.value.flatMap(item => item.child.name);
-  // console.log(mergedChildren);
-  console.log(menuArr.value.map(item => item.child.name));
+  // 遍历 menuArr 数组
+  menuArr.value.forEach(part => {
+    // 遍历每个 part 的 child 数组
+    part.child.forEach(child => {
+      // 检查 dataObj 中是否存在与 child.id 相同的键
+      if (dataObj.value.hasOwnProperty(child.id)) {
+        // 如果存在，将 child.isShow 设置为 true
+        child.isShow = true;
+      }
+    });
+  });
+
+  console.log(menuArr.value);
 });
 // 清理事件监听器
 onUnmounted(() => {
