@@ -595,6 +595,8 @@ const handleNav = (id: any, type?: string) => {
 const handleCase = (id: any) => {
   console.log(id);
 };
+
+// 匹配左侧导航id的项——加高亮
 const tableRowClassName = ({ row, rowIndex }) => {
   if (findCaseIdArr.value.includes(row.caseId)) {
     return "highlight-row";
@@ -606,21 +608,6 @@ const tableRowClassName = ({ row, rowIndex }) => {
   }
 };
 
-// 没实现
-// function rowView(id) {
-//   nextTick(); // 确保 DOM 已经更新
-//   const targetRow = tableData.value.find(row => row.caseId === id);
-//   if (targetRow) {
-//     const tableBody = tableRef.value.$el.querySelector(".el-table__body-wrapper tbody");
-//     const rows = tableBody.querySelectorAll("tr");
-
-//     rows.forEach(row => {
-//       if (row.cells.innerText === targetRow.caseId.toString()) {
-//         row.scrollIntoView({ behavior: "smooth", block: "center" });
-//       }
-//     });
-//   }
-// }
 onMounted(() => {
   handleNav(2);
 });

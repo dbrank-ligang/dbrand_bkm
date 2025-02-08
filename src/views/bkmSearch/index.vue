@@ -54,12 +54,12 @@
             :trigger-on-focus="false"
             clearable
             placeholder="搜索品牌名称"
-            @keyup.enter="handleSearch"
+            @keyup.enter="handleInputSearch"
             value-key="showText"
           >
             <!-- <template #append><div @click="handleSearch" style="cursor: pointer">搜索</div></template> -->
           </el-autocomplete>
-          <el-button size="small" @click="handleSearch1">搜索</el-button>
+          <el-button size="small" @click="handleInputSearch">搜索</el-button>
         </div>
       </div>
       <div class="tradeBox">
@@ -106,8 +106,20 @@
           </div>
         </div>
         <div class="inputBox">
-          <el-input placeholder="请输入类型名称"></el-input>
-          <el-button size="small">搜索</el-button>
+          <!-- <el-input placeholder="请输入类型名称"></el-input>
+          <el-button size="small">搜索</el-button> -->
+          <el-autocomplete
+            v-model="inputValue"
+            :fetch-suggestions="querySearch"
+            :trigger-on-focus="false"
+            clearable
+            placeholder="搜索类型名称"
+            @keyup.enter="handleInputSearch"
+            value-key="showText"
+          >
+            <!-- <template #append><div @click="handleSearch" style="cursor: pointer">搜索</div></template> -->
+          </el-autocomplete>
+          <el-button size="small" @click="handleInputSearch">搜索</el-button>
         </div>
       </div>
       <div class="tradeBox">
@@ -633,7 +645,7 @@ const querySearch = async (queryString: string, cb: any) => {
 // 点击搜索后:
 // 若检索数据为空，则弹框提示;
 // 若有检索数据，则直接跳转对应第一个媒体;
-const handleSearch1 = () => {
+const handleInputSearch = () => {
   if (searchData.value.length <= 0) {
     console.log("搜索数据的长度", searchData.value);
     // 4.跳转到首页

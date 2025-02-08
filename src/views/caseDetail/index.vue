@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="case_con" ref="scrollContainer" @copy.prevent="handleCopy">
-      <div class="case_con1">
+      <div class="case_con1" id="part1">
         <div class="timeBox">
           <div class="timeBox_left">
             <div class="date">
@@ -45,7 +45,7 @@
             </div>
           </div> -->
         </div>
-        <div id="startTime" class="countBox">
+        <div class="countBox">
           <div class="countBox_left">
             <div class="row_1">
               <div class="row_1_tag1">
@@ -249,7 +249,7 @@
           </div>
           <div class="qualityBox">
             <div class="subtitle">(三) 传播关键词云图</div>
-            <div class="contentBox ciYunBox" v-html="dataObj.spreadQuality.wordCloud"></div>
+            <div class="contentBox" id="ciYunBox" v-html="dataObj.spreadQuality.wordCloud"></div>
           </div>
         </div>
         <!-- </div> -->
@@ -267,8 +267,17 @@
         </div>
         <div id="referenceLink" class="innerBox">
           <div class="nodeTag">【参考链接】</div>
-          <div class="contentBox" v-html="dataObj.referenceLink"></div>
+          <div class="contentBox" v-if="dataObj.referenceLink && dataObj.referenceLink.length > 0">
+            <div v-for="item in dataObj.referenceLink" :key="item.title">
+              <a :href="item.linkUrl" target="_blank">{{ item.title }}</a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="desBox">
+        案例版权声明：「
+        牌传播案例库」所收录的案例均由『数字品牌榜』撰写，任何未经授权的转载、复制、翻印或建立网络镜像的行为均有违著作权相关的法律法规；本案例所使用的统计理论、技术、算法和内容版权归北京数榜信息科技有限公司所有，并可授权第三方在所允许范围内传播和引用，任何引用均须注明来源于“数字品牌榜”。“数榜”“数字品牌榜”名称及图形商标权利归北京数榜信息科技有限公司所有。
       </div>
     </div>
   </div>
@@ -328,12 +337,21 @@ const dataObj = ref({
     organization: ["中国人口福利基金会", "中国慈善家杂志", "中国慈善家杂志"]
   },
   sourceMaterial:
-    '1、"素材创意",创意性剪影海报<br/>蜜雪冰城在官宣代言人之前发布了悬念海报，通过剪影和暗示的方式引发了网友们的广泛猜测和讨论。并且，蜜雪冰城还给出了代言人的特点提示“肤白貌帅、能歌善舞、爱岗敬业”，更是激起了网友的好奇心，评论区热闹非凡。<img class="rich_pages wxw-img" data-imgfileid="100036856" data-ratio="1.7802503477051461" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IPZacL3G8k6ZcK3Bic7wuBl4GicZylo9M4TVYNqJE6M5KZGzqXhP7SpEw/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="719" style="vertical-align: middle;width: 100%;">来源：微博@蜜雪冰城<br />2、变装视频及幕后花絮雪王这次代言自家的新饮品，最大（唯一）的改变就是换了一身紫色新装，与“厚芋泥奶茶”相得益彰，所以后续宣传也以此为切入点。11月30日，蜜雪冰城发布了一段翻拍影视片段的视频，因为“先生，这里衣冠不整恕不招待”，所以雪王打上了领带、换上了西装，顺理成章完成了代言人的华丽转身。12月4日，蜜雪冰城发布雪王定制西装幕后vlog，雪王选了芋泥紫的颜色，并表示“新衣服搭配新身份，从今天起我就是厚芋泥奶茶全球代言人”，成功传播了品牌推出新饮品的信息。<br />3、自己玩自己，借梗营销当官方公布厚芋泥奶茶全球代言人就是雪王本人时，网友们纷纷表示“意料之外、情理之中”，并对此进行了各种吐槽和玩梗，比如“自己用自己”“公开了一个众所周知的事情”“好消息0个人想知道”。蜜雪冰城也趁机玩起了自己的梗，发布动态称“蜜雪冰城也是好起来了，竟然请顶流雪王代言”，进一步增加了话题的热度和讨论度。<img class="rich_pages wxw-img" data-imgfileid="100036855" data-ratio="1.0916666666666666" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IX6ILXUUF2I5qp2RFXkneYGhM9odR7HIqJnKicpD1sQqe5qqNAkU7Qmw/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="720" style="vertical-align: middle;width: 100%;"<br />来源：小红书',
+    '1、"素材创意",创意性剪影海报<br/>蜜雪冰城在官宣代言人之前发布了悬念海报，通过剪影和暗示的方式引发了网友们的广泛猜测和讨论。并且，蜜雪冰城还给出了代言人的特点提示“肤白貌帅、能歌善舞、爱岗敬业”，更是激起了网友的好奇心，评论区热闹非凡。来源：微博@蜜雪冰城<br />2、变装视频及幕后花絮雪王这次代言自家的新饮品，最大（唯一）的改变就是换了一身紫色新装，与“厚芋泥奶茶”相得益彰，所以后续宣传也以此为切入点。11月30日，蜜雪冰城发布了一段翻拍影视片段的视频，因为“先生，这里衣冠不整恕不招待”，所以雪王打上了领带、换上了西装，顺理成章完成了代言人的华丽转身。12月4日，蜜雪冰城发布雪王定制西装幕后vlog，雪王选了芋泥紫的颜色，并表示“新衣服搭配新身份，从今天起我就是厚芋泥奶茶全球代言人”，成功传播了品牌推出新饮品的信息。<br />3、自己玩自己，借梗营销当官方公布厚芋泥奶茶全球代言人就是雪王本人时，网友们纷纷表示“意料之外、情理之中”，并对此进行了各种吐槽和玩梗，比如“自己用自己”“公开了一个众所周知的事情”“好消息0个人想知道”。蜜雪冰城也趁机玩起了自己的梗，发布动态称“蜜雪冰城也是好起来了，竟然请顶流雪王代言”，进一步增加了话题的热度和讨论度。<img class="rich_pages wxw-img" data-imgfileid="100036855" data-ratio="1.0916666666666666" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IX6ILXUUF2I5qp2RFXkneYGhM9odR7HIqJnKicpD1sQqe5qqNAkU7Qmw/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="720" style="vertical-align: middle;width: 100%;"<br />来源：小红书',
   learnFrom:
     "1、‘借鉴’-代言人和品牌要有契合点<br />选择与品牌定位相符的代言人，有能提高品牌知名度、增强品牌形象、塑造品牌价值、吸引目标消费者、提高产品销量等等一系列好处。也就是说，代言人是要为品牌赋能与造势的，除了形象、气质要与品牌相契合，其流量、知名度必须高于品牌或者产品，否则就不知道是谁给谁代言了。一个负面例子是霸王茶姬，请了一堆流量明星线下站台，不仅很多人都不认识，而且明星还接连念错品牌，营销变营笑。<br />预热期间，粉丝在蜜雪冰城评论区猜测了数位明星，但知名度、影响力几乎没有能和雪王对等的，有网友说“雪王的形象太成功了，比任何明星都好使”。代言人的作用是锦上添花，对于本身就具有高知名度的品牌来说，代言人的国民度是一定要高于或跟品牌是一个等级的，或者是因为某现象级事件，在短期内有超高影响力的公众人物。<br />2、坚守品牌特色，发挥差异化优势<br />蜜雪冰城从没请过任何流量明星代言，一是为了节省成本，二是因为雪王这个IP深入人心，本身就是品牌的最佳代言人，而且永远没有塌房的风险。所以蜜雪冰城本次营销看似充满反差，其实就像网友说的在“意料之中”，自己代言自己，是蜜雪冰城一贯的特色和传统，也是区别于其他品牌的差异化打法。<br />其他品牌也应该认识到，在产品趋同的情况下，在营销中保持特色，是吸引消费者的好办法。比如瑞幸咖啡，疯狂联名、追热点、频繁更换代言人，虽然走了一条跟蜜雪冰城相反的“花心”之路，却始终在营销圈拥有一席之地，这也不失为差异化营销的好办法。",
   // challenge: "挑战",
-  referenceLink:
-    "1、'链接'《史上“最穷”蜜雪冰城代言人，网友：没咖硬抬！》https://mp.weixin.qq.com/s/jtKq8AS7VXk2qVtFm7Ig2g<br />2、《雪王为蜜雪冰城代言？？这真是硬炒作。。》https://mp.weixin.qq.com/s/RXw2eqGXGruYReFvRf0TRg<br />3、《蜜雪新代言人爆了，网友直呼请了个“永不担心塌房的明星”》https://mp.weixin.qq.com/s/FaNHc71yjMfCb0tKeq1o0A<br />4、《一个子不掏！蜜雪冰城推出全球代言人！》https://mp.weixin.qq.com/s/9Qg37UW1a1-1ec-5WRx7Wg<br />5、《蜜雪冰城官宣的全球代言人，居然不穿裤子》https://mp.weixin.qq.com/s/N0U1CL4WACL7WLT4E2OmEg<br />6、《蜜雪冰城喜提“最廉价全球代言人”，网友：这段时间不喝了！》https://mp.weixin.qq.com/s/YuG6n29MWhb1zFljTSCN5Q",
+  referenceLink: [
+    {
+      title: "1、《史上“最穷”蜜雪冰城代言人，网友：没咖硬抬！》",
+      linkUrl: "https://mp.weixin.qq.com/s/jtKq8AS7VXk2qVtFm7Ig2g"
+    },
+    {
+      title: " 2、《雪王为蜜雪冰城代言？？这真是硬炒作。。》",
+      linkUrl: "https://mp.weixin.qq.com/s/RXw2eqGXGruYReFvRf0TRg"
+    }
+  ],
+  // "1、'链接'《史上“最穷”蜜雪冰城代言人，网友：没咖硬抬！》https://mp.weixin.qq.com/s/jtKq8AS7VXk2qVtFm7Ig2g<br />2、《雪王为蜜雪冰城代言？？这真是硬炒作。。》https://mp.weixin.qq.com/s/RXw2eqGXGruYReFvRf0TRg<br />3、《蜜雪新代言人爆了，网友直呼请了个“永不担心塌房的明星”》https://mp.weixin.qq.com/s/FaNHc71yjMfCb0tKeq1o0A<br />4、《一个子不掏！蜜雪冰城推出全球代言人！》https://mp.weixin.qq.com/s/9Qg37UW1a1-1ec-5WRx7Wg<br />5、《蜜雪冰城官宣的全球代言人，居然不穿裤子》https://mp.weixin.qq.com/s/N0U1CL4WACL7WLT4E2OmEg<br />6、《蜜雪冰城喜提“最廉价全球代言人”，网友：这段时间不喝了！》https://mp.weixin.qq.com/s/YuG6n29MWhb1zFljTSCN5Q",
   // 传播质量
   spreadQuality: {
     // （一）传播引爆度

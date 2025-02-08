@@ -157,7 +157,7 @@ const carouseData = ref([
       {
         rank: "No.1",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: [
           "#案例类型",
@@ -178,28 +178,28 @@ const carouseData = ref([
       {
         rank: "No.2",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.3",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.4",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.5",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
         url: ""
@@ -278,21 +278,21 @@ const carouseData = ref([
       {
         rank: "No.3",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.4",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.5",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
         url: ""
@@ -364,28 +364,28 @@ const carouseData = ref([
       {
         rank: "No.2",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.3",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.4",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.5",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
         url: ""
@@ -436,7 +436,7 @@ const carouseData = ref([
       {
         rank: "No.1",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: [
           "#案例类型",
@@ -457,28 +457,28 @@ const carouseData = ref([
       {
         rank: "No.2",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.3",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.4",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
       },
       {
         rank: "No.5",
         num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
+        name: "Babycare世界镇痛日CampaignBabycare",
         DB: "1,123,345,456DB",
         type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
         url: ""

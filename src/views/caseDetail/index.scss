@@ -3,12 +3,12 @@
   list-style: none;
 }
 .caseDetailBox {
-  width: 1200px;
+  width: 900px;
   height: 100%;
   margin: auto;
   background-color: #F7F7F7;
   // border: 1px solid red;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
   display: flex;
 
@@ -59,8 +59,8 @@
    }
   }
   .case_con {
-    // flex: 1;
-    width: 1054px;
+    flex: 1;
+    // width:  800px;
     padding: 10px;
     // border: 1px solid red;
     overflow: auto;
@@ -356,6 +356,7 @@
       padding: 14px;
       font-size: 14px;
       line-height: 24px;
+      color: #5d5d5d;
       :deep(img){
         // max-width: 720px;
         display: block;
@@ -363,8 +364,6 @@
         margin-bottom:  10px;
         margin: auto;
       }
-
- 
     }
 
     .qualityBox {
@@ -436,7 +435,7 @@
  
      .qualityBox {
       font-size: 14px;
-      color: #5d5d5d;
+      color: #000;
 
       .top10listTitle {
         font-size: 16px;
@@ -464,9 +463,10 @@
 .typeBox {
   width: 100%;
   height: auto;
+  color: #000;
   line-height: 30px;
-  display: flex;
   margin-bottom: 20px;
+  display: flex;
 
   .typeLabel{ 
     width: 80px;
@@ -494,8 +494,30 @@
   align-items: baseline;
 }
 
-.ciYunBox {
+.desBox {
+  color: rgb(161,161,161);
+  line-height: 20px;
+  font-size: 12px;
+  margin: 20px 10px;
+}
+
+#ciYunBox {
+  // border: 1px solid red;
   img {
-    max-width: 700;
+    width: 531px !important;
+    border: 1px solid red;
+  }
+}
+
+#referenceLink {
+  a {
+    cursor: pointer;
+    color: #000 !important;
+    text-decoration: none;
+
+    // &:hover {
+    //   color: #2440b3 !important;
+    //   text-decoration: underline; 
+    // }
   }
 }
