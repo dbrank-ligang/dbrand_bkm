@@ -82,7 +82,7 @@
             <el-button @click="handleSearch" class="buttonStyle">搜索</el-button>
           </div>
 
-          <div class="hoistryBox">
+          <div class="hosieryBox">
             <div class="listTit">搜索历史</div>
             <div class="listCon">
               <div v-for="item in historyListData" :key="item.mediaId" @click="historyChange(item)">
@@ -90,7 +90,7 @@
               </div>
             </div>
           </div>
-          <div class="hoistryBox">
+          <div class="hosieryBox">
             <div class="listTit">搜索推荐</div>
             <div class="listCon">
               <div v-for="item in tagListData" :key="item.mediaId" @click="historyChange(item)">

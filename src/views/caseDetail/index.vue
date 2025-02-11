@@ -397,7 +397,7 @@ const dataObj = ref({
     },
     // （三）传播关键词云图
     wordCloud:
-      '词云图，在本次Campaign中，“雪王”“代言人”“官宣自己”等成为核心关键词，有效触达用户认知。代表芋泥和雪王新皮肤的“紫色”也被频繁提及，此外，雪王用来形容自己的“能歌善舞、爱岗敬业、肤白貌美”等词汇也给网友留下了深刻印象。<img class="rich_pages wxw-img" data-imgfileid="100036860" data-ratio="1.1347222222222222" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IOvicMhorncTiaFuOb3bCqXVYVto5BQadqhq8o7o8HTib06tPNCcibdjbAQ/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="720" style="vertical-align: middle;width: 100%;">来源：『数字品牌榜』监测研究'
+      '词云图，在本次Campaign中，“雪王”“代言人”“官宣自己”等成为核心关键词，有效触达用户认知。代表芋泥和雪王新皮肤的“紫色”也被频繁提及，此外，雪王用来形容自己的“能歌善舞、爱岗敬业、肤白貌美”等词汇也给网友留下了深刻印象。<img class="rich_pages wxw-img" data-imgfileid="100036860" data-ratio="1.1347222222222222" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IOvicMhorncTiaFuOb3bCqXVYVto5BQadqhq8o7o8HTib06tPNCcibdjbAQ/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="720" style="vertical-align: middle;width: 631px;">来源：『数字品牌榜』监测研究'
   }
 });
 
@@ -506,9 +506,6 @@ const handleCopy = () => {
     duration: 9000
   });
 };
-// const flattenedChildren = computed(() => {
-//   return menuArr.value.flatMap(item => item.child);
-// });
 
 onMounted(async () => {
   scrollChangeTab();
