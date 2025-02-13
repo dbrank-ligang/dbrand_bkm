@@ -400,7 +400,7 @@ const dataObj = ref({
       '词云图，在本次Campaign中，“雪王”“代言人”“官宣自己”等成为核心关键词，有效触达用户认知。代表芋泥和雪王新皮肤的“紫色”也被频繁提及，此外，雪王用来形容自己的“能歌善舞、爱岗敬业、肤白貌美”等词汇也给网友留下了深刻印象。<img class="rich_pages wxw-img" data-imgfileid="100036860" data-ratio="1.1347222222222222" data-s="300,640" src="https://mmbiz.qpic.cn/mmbiz_png/sxgP7jgemWoPYjsonia5RAquSBiaU2Iv7IOvicMhorncTiaFuOb3bCqXVYVto5BQadqhq8o7o8HTib06tPNCcibdjbAQ/640?wx_fmt=png&amp;from=appmsg" data-type="png" data-w="720" style="vertical-align: middle;width: 631px;">来源：『数字品牌榜』监测研究'
   }
 });
-
+// 左侧导航菜单数据
 const menuArr = ref([
   {
     id: "part1",
@@ -478,7 +478,6 @@ const scrollChangeTab = () => {
 const handleCopy = () => {
   // 你可以在这里添加任何你希望在复制事件被阻止时执行的逻辑
   // 但由于我们已经使用了 `.prevent` 修饰符，所以这个方法实际上不会被调用
-  // ElMessage.warning("禁止非付费用户复制文本，需联系棒女郎成为付费会员~");
   // 显示二维码 Notification
   ElNotification({
     dangerouslyUseHTMLString: true, // 允许使用HTML字符串
