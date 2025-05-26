@@ -2,10 +2,14 @@ import http from "@/api";
 
 // 用户信息
 export const userInfoApi = () => {
-  return http.get(`/user/userInfo`, {}, { loading: true }); // 正常 post json 请求  ==>  application/json
+  return http.get(`/userInfo`, {}, { loading: true }); // 正常 post json 请求  ==>  application/json
 };
 
 //首页
+//周榜月榜年榜
+export const getRankListApi = param => {
+  return http.get(`/getRankList`, param, { loading: false });
+};
 //概览
 export const overviewApi = param => {
   return http.get(`/statistic/overview`, param, { loading: false });

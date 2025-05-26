@@ -32,7 +32,7 @@
         >
           <template #append><div @click="handleSearch" style="cursor: pointer">搜索</div></template>
         </el-autocomplete>
-        <el-dropdown trigger="click" style="margin-left: 30px">
+        <!-- <el-dropdown trigger="click" style="margin-left: 30px">
           <span class="el-dropdown-link">
             切换品牌<el-icon class="el-icon--right"><arrow-down /></el-icon>
           </span>
@@ -43,7 +43,7 @@
               }}</el-dropdown-item>
             </el-dropdown-menu>
           </template>
-        </el-dropdown>
+        </el-dropdown> -->
         <div style="margin-left: 30px">{{ userInfo.name }}</div>
         <div style="margin-left: 30px" @click="logout">
           <a style="color: #000; text-decoration: none; cursor: pointer">退出登录</a>
@@ -78,11 +78,11 @@ import { useGlobalStore } from "@/stores/modules/global";
 import Main from "@/layouts/components/Main/index.vue";
 import SubMenu from "@/layouts/components/Menu/SubMenu.vue";
 import { useUserStore } from "@/stores/modules/user";
-import { useCurrBrandStore } from "@/stores/modules/currBrand";
+// import { useCurrBrandStore } from "@/stores/modules/currBrand";
 import router from "@/routers";
 import { MEDIADETAIL } from "@/config";
 import { mediaNavApi, searchMediaApi } from "@/api/modules/media";
-import { deleteCookie, addMediaNotExist } from "@/utils";
+import { deleteCookie } from "@/utils";
 import { ElNotification } from "element-plus";
 // import { deleteCookie } from "@/utils";
 
@@ -93,7 +93,7 @@ const accordion = computed(() => globalStore.accordion);
 const menuList = computed(() => authStore.showMenuListGet);
 const activeMenu = computed(() => (route.meta.activeMenu ? route.meta.activeMenu : route.path) as string);
 const userStore = useUserStore();
-const currBrandStore = useCurrBrandStore();
+// const currBrandStore = useCurrBrandStore();
 const userInfo: any = computed(() => userStore.userInfo);
 const inputValue = ref("");
 const value = ref("");
@@ -155,7 +155,7 @@ const handleSearch = () => {
     getMediaNavApi(searchData.value[0]); //跳转详情页
   } else {
     // 保存未搜索到的媒体
-    addMediaNotExist(inputValue.value);
+    // addMediaNotExist(inputValue.value);
     // 4.跳转到首页
     ElNotification({
       title: "",
@@ -167,9 +167,9 @@ const handleSearch = () => {
   }
 };
 
-const handleBrand = (item: any) => {
-  currBrandStore.setCurrBrandObj(item);
-};
+// const handleBrand = (item: any) => {
+// currBrandStore.setCurrBrandObj(item);
+// };
 const logout = () => {
   // 2.清除 Token
   userStore.setUserInfo("");

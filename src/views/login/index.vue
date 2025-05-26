@@ -21,7 +21,7 @@ import { onMounted, ref } from "vue";
 // import LoginForm from "./components/LoginForm.vue";
 // import SwitchDark from "@/components/SwitchDark/index.vue";
 import { useUserStore } from "@/stores/modules/user";
-import { useCurrBrandStore } from "@/stores/modules/currBrand";
+// import { useCurrBrandStore } from "@/stores/modules/currBrand";
 import { useTabsStore } from "@/stores/modules/tabs";
 import { useKeepAliveStore } from "@/stores/modules/keepAlive";
 import { initDynamicRouter } from "@/routers/modules/dynamicRouter";
@@ -33,7 +33,7 @@ import { userInfoApi } from "@/api/modules/media";
 
 const router = useRouter();
 const userStore = useUserStore();
-const currBrandStore = useCurrBrandStore();
+// const currBrandStore = useCurrBrandStore();
 const tabsStore = useTabsStore();
 const keepAliveStore = useKeepAliveStore();
 const userInfoObj = ref({});
@@ -64,10 +64,17 @@ onMounted(async () => {
 
 // 查询个人信息
 const getUserInfoObj = async () => {
-  const { data } = await userInfoApi();
-  userInfoObj.value = data as any;
-  userStore.setUserInfo(data);
-  currBrandStore.setCurrBrandObj((data as any).brands[0]);
+  const { result } = await userInfoApi();
+  console.log(result);
+  userInfoObj.value = result as any;
+  userStore.setUserInfo(result);
+  // userStore.setUserInfo({
+  //   token: "aaaaaa111111",
+  //   userId: 111111,
+  //   name: "张三",
+  //   memberShip: 1 //0非会员 1会员
+  // });
+  // currBrandStore.setCurrBrandObj((data as any).brands[0]);  // 没用
 };
 </script>
 

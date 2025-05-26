@@ -108,17 +108,17 @@
       </div>
       <div class="case_con1">
         <div id="part1" class="moduleTitle">part1 <span>项目信息</span></div>
-        <div id="startTime">
+        <div id="startTime" v-if="dataObj.startTime">
           <div class="nodeTag">【起止时间】</div>
           <span>{{ dataObj.startTime }}</span>
         </div>
-        <div id="highlights" class="innerBox">
+        <div id="highlights" class="innerBox" v-if="dataObj.highlights">
           <div class="nodeTag">【案例亮点】</div>
           <div class="contentBox" v-html="dataObj.highlights"></div>
         </div>
-        <div id="caseType" class="innerBox">
+        <div id="caseType" class="innerBox" v-if="dataObj.caseType">
           <div class="nodeTag">【案例类型】</div>
-          <div class="contentBox" v-if="dataObj.caseType">
+          <div class="contentBox">
             <div class="typeBox" v-if="dataObj.caseType.taskType && dataObj.caseType.taskType.length > 0">
               <div class="typeLabel">任务类型</div>
               <div class="typeList">
@@ -147,24 +147,24 @@
             </div>
           </div>
         </div>
-        <div id="introduce">
+        <div id="introduce" v-if="dataObj.introduce">
           <div class="nodeTag">【案例简介】</div>
           <div class="contentBox" v-html="dataObj.introduce"></div>
         </div>
       </div>
       <div class="case_con1">
         <div id="part2" class="moduleTitle">part2 <span>项目执行</span></div>
-        <div id="spreadRhythm">
+        <div id="spreadRhythm" v-if="dataObj.spreadRhythm">
           <div class="nodeTag">【传播节奏】</div>
           <div class="contentBox" v-html="dataObj.spreadRhythm"></div>
         </div>
-        <div id="medium" class="innerBox">
+        <div id="medium" class="innerBox" v-if="dataObj.medium">
           <div class="nodeTag">【媒介策略】</div>
           <div class="contentBox" v-html="dataObj.medium"></div>
         </div>
-        <div id="cooperation" class="innerBox">
+        <div id="cooperation" class="innerBox" v-if="dataObj.cooperation">
           <div class="nodeTag">【合作资源】</div>
-          <div class="contentBox" v-if="dataObj.cooperation">
+          <div class="contentBox">
             <div class="typeBox" v-if="dataObj.cooperation.starLinkage && dataObj.cooperation.starLinkage.length > 0">
               <div class="typeLabel">明星联动</div>
               <div class="typeList">
@@ -184,11 +184,11 @@
             </div>
           </div>
         </div>
-        <div id="sourceMaterial" class="innerBox">
+        <div id="sourceMaterial" class="innerBox" v-if="dataObj.sourceMaterial">
           <div class="nodeTag">【素材创意】</div>
           <div class="contentBox" v-html="dataObj.sourceMaterial"></div>
         </div>
-        <div id="spreadQuality" class="innerBox">
+        <div id="spreadQuality" class="innerBox" v-if="dataObj.spreadQuality">
           <div class="nodeTag">【传播质量】</div>
           <div class="qualityBox">
             <div class="subtitle">(一) 传播引爆度</div>
@@ -255,17 +255,17 @@
         <!-- </div> -->
       </div>
 
-      <div class="case_con1">
+      <div class="case_con1" v-if="dataObj.pageType == 'A'">
         <div id="part3" class="moduleTitle">part3<span>结案点评</span></div>
         <div id="learnFrom">
-          <div class="nodeTag">【借鉴】</div>
+          <div class="nodeTag" v-if="dataObj.learnFrom">【借鉴】</div>
           <div class="contentBox" v-html="dataObj.learnFrom"></div>
         </div>
         <div v-if="dataObj.challenge" id="challenge" class="innerBox">
           <div class="nodeTag">【挑战】</div>
           <div class="contentBox" v-html="dataObj.challenge"></div>
         </div>
-        <div id="referenceLink" class="innerBox">
+        <div id="referenceLink" class="innerBox" v-if="dataObj.referenceLink">
           <div class="nodeTag">【参考链接】</div>
           <div class="contentBox" v-if="dataObj.referenceLink && dataObj.referenceLink.length > 0">
             <div v-for="item in dataObj.referenceLink" :key="item.title">
@@ -292,7 +292,7 @@ import QRCode from "@/assets/images/QRcode.jpg";
 const selectedItem = ref();
 const scrollContainer = ref(null);
 const dataObj = ref({
-  // casePageType: "A", // 案例页类型A/B
+  pageType: "A", // 案例页类型A/B
   month: "2024", // 案例月份
   year: "Oct", // 案例年份
   caseId: "D2410301", // 案例编号
@@ -456,11 +456,18 @@ const scrollChangeTab = () => {
       { idKey: "part1" },
       { idKey: "startTime" },
       { idKey: "highlights" },
+      { idKey: "caseType" },
       { idKey: "introduce" },
       { idKey: "part2" },
       { idKey: "spreadRhythm" },
       { idKey: "medium" },
-      { idKey: "cooperation" }
+      { idKey: "cooperation" },
+      { idKey: "sourceMaterial" },
+      { idKey: "spreadQuality" },
+      { idKey: "part3" },
+      { idKey: "learnFrom" },
+      { idKey: "challenge" },
+      { idKey: "referenceLink" }
     ];
     for (const contentItem of contentItems) {
       const element = document.getElementById(contentItem.idKey);
@@ -508,11 +515,15 @@ const handleCopy = () => {
 
 onMounted(async () => {
   scrollChangeTab();
+  // 如果是详情页B， 只显示part1和part2
+  if (dataObj.value.pageType == "B") {
+    menuArr.value.pop();
+  }
   // 遍历 menuArr 数组
   menuArr.value.forEach(part => {
     // 遍历每个 part 的 child 数组
     part.child.forEach(child => {
-      // 检查 dataObj 中是否存在与 child.id 相同的键
+      // 检查 dataObj 中是否存在与 child.id 相同的键（二级节点）
       if (dataObj.value.hasOwnProperty(child.id)) {
         // 如果存在，将 child.isShow 设置为 true
         child.isShow = true;

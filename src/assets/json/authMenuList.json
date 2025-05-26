@@ -7,7 +7,7 @@
       "component": "/home/index",
       "meta": {
         "icon": "",
-        "title": "关于BKM案例库",
+        "title": "案例库首页",
         "isLink": "",
         "isHide": false,
         "isFull": false,
@@ -18,18 +18,18 @@
       }
     },
     {
-      "path": "",
-      "name": "bkmSource",
-      "component": "/bkmSource/index",
+      "path": "/aboutBkm/index",
+      "name": "aboutBkm",
+      "component": "/aboutBkm/index",
       "meta": {
         "icon": "",
-        "title": "素材库",
+        "title": "关于BKM案例库",
         "isLink": "",
         "isHide": false,
         "isFull": false,
         "isAffix": false,
         "isKeepAlive": true,
-        "activeMenu":"/bkmSource/index",
+        "activeMenu":"/aboutBkm/index",
         "isDisabled": false
       }
     },
