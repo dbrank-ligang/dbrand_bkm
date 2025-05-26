@@ -19,6 +19,7 @@
         <div @click="toNextWeek">{{ nextWeek }}</div>
       </div>
       <swiper
+        v-loading="loadingSwiper"
         @swiper="onSwiper"
         :initial-slide="1"
         :slides-per-view="3"
@@ -48,7 +49,7 @@
             </div>
             <div class="caseBox_col">
               <div>数字品牌价值：</div>
-              <div>{{ cardItem.DB }}</div>
+              <div>{{ toVisualThousands(cardItem.db) }}DB</div>
             </div>
             <div class="caseBox_col caseBox_col_type">
               <div>[案例类型]</div>
@@ -59,7 +60,9 @@
           </div>
         </swiper-slide>
       </swiper>
-      <div class="articleBox">{{ reviewArticle }}</div>
+      <div class="articleBox">
+        <a :href="reviewArticleUrl" target="_blank">{{ reviewArticle }}</a>
+      </div>
     </div>
     <div class="paddingBox">
       <div class="searchBox">
@@ -137,391 +140,22 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import router from "@/routers";
-import { YEARLIST } from "@/config";
+import { YEARLIES } from "@/config";
 import { CASEDETAIL } from "@/config";
-import { ElNotification } from "element-plus";
+import { getRankListApi } from "@/api/modules/media";
+import { toVisualThousands } from "@/utils";
 
 const tabItems = ref(["周榜", "月榜", "年榜"]);
 const activeIndex = ref(0);
 const currentWeek = ref("");
+const loadingSwiper = ref(false); // 周月切换loading
+// const keyStr = ref(Math.random()); // 周月切换loading
 const prevWeek = ref("");
 const nextWeek = ref("");
 const currentSwiperIndex = ref(); // 当前轮播卡片的index
 const reviewArticle = ref(""); //点评文章名
-const carouseData = ref([
-  {
-    id: 1,
-    time: "2024年08月01日-2024年08月07日",
-    article: "文章文章文章文章1",
-    msg: [
-      {
-        rank: "No.1",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: [
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销",
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销",
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销"
-        ],
-        url: ""
-      },
-      {
-        rank: "No.2",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.3",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.4",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.5",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      }
-      // {
-      //   time: "2024年08月11日-2024年08月17日",
-      //   num: "D2410301",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410302",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410303",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410304",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410305",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // }
-    ]
-  },
-  {
-    id: 2,
-    time: "2024年08月08日-2024年08月14日",
-    article: "文章文章文章文章2",
-    msg: [
-      {
-        rank: "No.1",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: [
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销",
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销",
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销"
-        ],
-        url: ""
-      },
-      {
-        rank: "No.2",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.3",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.4",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.5",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      }
-      // {
-      //   time: "2024年08月11日-2024年08月17日",
-      //   num: "D2410301",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410302",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410303",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410304",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410305",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // }
-    ]
-  },
-  {
-    id: 3,
-    time: "2024年08月15日-2024年08月21日",
-    article: "文章文章文章文章3",
-    msg: [
-      {
-        rank: "No.1",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-        DB: "1,123,345,456DB",
-        type: [
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销",
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销",
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销"
-        ],
-        url: ""
-      },
-      {
-        rank: "No.2",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.3",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.4",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.5",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      }
-      // {
-      //   time: "2024年08月11日-2024年08月17日",
-      //   num: "D2410301",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410302",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410303",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410304",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410305",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // }
-    ]
-  },
-  {
-    id: 4,
-    time: "2024年08月22日-2024年08月29日",
-    article: "文章文章文章文章4",
-    msg: [
-      {
-        rank: "No.1",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: [
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销",
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销",
-          "#案例类型",
-          "#内容营销",
-          "#ESG传播",
-          "#TVC营销"
-        ],
-        url: ""
-      },
-      {
-        rank: "No.2",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.3",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.4",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"]
-      },
-      {
-        rank: "No.5",
-        num: "D2410301",
-        name: "Babycare世界镇痛日CampaignBabycare",
-        DB: "1,123,345,456DB",
-        type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-        url: ""
-      }
-      // {
-      //   time: "2024年08月11日-2024年08月17日",
-      //   num: "D2410301",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410302",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410303",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410304",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // },
-      // {
-      //   num: "D2410305",
-      //   name: "Babycare世界镇痛日CampaignBabycare世界镇痛日Campaign",
-      //   DB: "1,123,345,456DB",
-      //   type: ["#案例类型", "#内容营销", "#ESG传播", "#TVC营销"],
-      //   url: ""
-      // }
-    ]
-  }
-]);
+const reviewArticleUrl = ref(""); //点评文章名
+const carouseData = ref([] as any); //周、月榜
 
 const swiperRef = ref(null) as any;
 const inputValue = ref("");
@@ -585,15 +219,16 @@ const caseListData = ref([
   }
 ]);
 // 周、月、年 榜切换
-const handleBillboard = (index, item) => {
+const handleBillboard = (index: number, item: any) => {
   //index:0 周榜； index：1 月榜；
   console.log(item);
   if (index !== 2) {
     activeIndex.value = index;
+    getRankList(index); // 请求周榜or月榜数据
   } else {
     // 跳转到年榜
     let routerUrl = router.resolve({
-      path: YEARLIST
+      path: YEARLIES
     });
     window.open(routerUrl.href, "_blank");
   }
@@ -615,15 +250,19 @@ const toPrevWeek = index => {
   console.log(index);
   swiperRef.value.slidePrev();
 };
-//
+//轮播左右按钮
 const onSwiperChange = index => {
-  console.log(carouseData.value[index]);
-  currentSwiperIndex.value = index; // 当前Swiper的Index
-  currentWeek.value = carouseData.value[index].time;
-  prevWeek.value = index > 0 ? carouseData.value[index - 1].time : "";
-  nextWeek.value = index + 1 === carouseData.value.length ? "" : carouseData.value[index + 1].time;
-  reviewArticle.value = carouseData.value[index].article;
-  console.log(carouseData.value[index].article);
+  console.log(index);
+  if (carouseData.value.length > 0) {
+    currentSwiperIndex.value = index; // 当前Swiper的Index
+    currentWeek.value = carouseData.value[index].time || "";
+    prevWeek.value = index > 0 ? carouseData.value[index - 1].time : "";
+    nextWeek.value = index + 1 === carouseData.value.length ? "" : carouseData.value[index + 1].time;
+    reviewArticle.value = carouseData.value[index].articleName;
+    reviewArticleUrl.value = carouseData.value[index].articleUrl;
+    // console.log(carouseData.value[index].articleName);
+    // console.log(carouseData.value[index].articleUrl);
+  }
 };
 // 点击周、月榜里的每一个小卡片
 const handleCase = item => {
@@ -676,8 +315,27 @@ const handleSearch = () => {
 const historyChange = item => {
   console.log(item);
 };
+
+// 获取周、月榜数据
+const getRankList = index => {
+  loadingSwiper.value = true;
+  const params = index === 0 ? "week" : "month";
+  getRankListApi({ type: params })
+    .then(res => {
+      loadingSwiper.value = false;
+      console.log(res);
+      carouseData.value = res.result;
+      if (res.result) {
+        onSwiperChange(1);
+        swiperRef.value.slideTo(1, 0, false);
+      }
+    })
+    .catch(() => {
+      loadingSwiper.value = false;
+    });
+};
 onMounted(() => {
-  onSwiperChange(1);
+  getRankList(0);
 });
 </script>
 

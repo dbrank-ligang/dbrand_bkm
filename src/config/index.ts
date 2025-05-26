@@ -13,7 +13,7 @@ export const MEDIADETAIL: string = "/mediaDetail/index";
 export const CASEDETAIL: string = "/caseDetail/index";
 
 // 年榜页面
-export const YEARLIST: string = "/yearList/index";
+export const YEARLIES: string = "/yearList/index";
 
 // 默认主题颜色
 // export const DEFAULT_PRIMARY: string = "#009688"; //绿色

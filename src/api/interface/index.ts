@@ -2,11 +2,13 @@
 export interface Result {
   code: string;
   msg: string;
+  message: string;
 }
 
 // 请求响应参数（包含data）
 export interface ResultData<T = any> extends Result {
   data: T;
+  result: T;
 }
 
 // 分页响应参数

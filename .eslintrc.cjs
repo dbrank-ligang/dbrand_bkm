@@ -21,6 +21,17 @@ module.exports = {
   },
   // 继承某些已有的规则
   extends: ["plugin:vue/vue3-recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+
+  // ----------注释start------------
+  // 打包的时候注释掉这块
+  // parserOptions: {
+  //   ecmaVersion: 2020,
+  //   sourceType: "module",
+  //   parser: "@typescript-eslint/parser"
+  // },
+  // plugins: ["vue", "@typescript-eslint"],
+  // ----------注释end------------
+
   /**
    * "off" 或 0    ==>  关闭规则
    * "warn" 或 1   ==>  打开的规则作为警告（不影响代码执行）
@@ -58,4 +69,16 @@ module.exports = {
     "vue/multi-word-component-names": "off", // 要求组件名称始终为 “-” 链接的单词
     "vue/no-setup-props-destructure": "off" // 禁止解构 props 传递给 setup
   }
+
+  // ----------注释start------------
+  // 打包的时候注释掉这块
+  // overrides: [
+  //   {
+  //     files: ["**/*.vue"],
+  //     rules: {
+  //       // 针对 .vue 文件的特定规则
+  //     }
+  //   }
+  // ]
+  // ----------注释end------------
 };
